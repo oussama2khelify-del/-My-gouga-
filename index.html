@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Gouga ❤️</title>
+<title>❤️ Gouga ❤️</title>
 
 <style>
 :root {
@@ -231,6 +231,144 @@ footer { text-align: center; padding: 20px; color: #bba9df; font-size: 12px; }
   to { transform: translateY(12px) scale(1.3); opacity: 1; }
 }
 
+/* Magical cinematic opening */
+#opening {
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at center, #512078 0%, #1b103e 42%, #050511 100%);
+}
+
+#opening::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: -1;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    #e879f955,
+    transparent,
+    #818cf855,
+    transparent,
+    #fb718555,
+    transparent
+  );
+  animation: galaxySpin 18s linear infinite;
+}
+
+#opening::after {
+  content: "✦     ·      ✧      ·     ✦";
+  position: absolute;
+  inset: 0;
+  color: #fff;
+  font-size: 26px;
+  letter-spacing: 15px;
+  line-height: 2.7;
+  overflow: hidden;
+  opacity: .35;
+  pointer-events: none;
+  animation: starDrift 12s linear infinite;
+}
+
+#opening h1 {
+  position: relative;
+  letter-spacing: 8px;
+  animation: nameReveal 2.5s ease both,
+             namePulse 2s 2.5s ease-in-out infinite alternate;
+}
+
+#opening h1::after {
+  content: "✧";
+  position: absolute;
+  right: -25px;
+  top: -15px;
+  font-size: 22px;
+  animation: sparkle 1s infinite alternate;
+}
+
+#opening .intro {
+  animation: floatText 3s ease-in-out infinite alternate;
+}
+
+#opening .openBtn {
+  position: relative;
+  overflow: hidden;
+  animation: buttonPulse 1.7s infinite alternate;
+}
+
+#opening .openBtn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 60%;
+  height: 200%;
+  background: #ffffff70;
+  transform: rotate(25deg);
+  animation: buttonShine 3s infinite;
+}
+
+@keyframes galaxySpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes starDrift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); }
+}
+
+@keyframes nameReveal {
+  0% {
+    opacity: 0;
+    transform: scale(.15) rotate(-12deg);
+    filter: blur(20px);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.15) rotate(3deg);
+    filter: blur(0);
+  }
+  100% { transform: scale(1) rotate(0); }
+}
+
+@keyframes namePulse {
+  from {
+    text-shadow: 0 0 10px #ff8bd1;
+    transform: scale(1);
+  }
+  to {
+    text-shadow: 0 0 25px #ff8bd1, 0 0 55px #a78bfa;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes sparkle {
+  from { opacity: .25; transform: scale(.5) rotate(0); }
+  to { opacity: 1; transform: scale(1.5) rotate(90deg); }
+}
+
+@keyframes floatText {
+  from { translate: 0 0; }
+  to { translate: 0 -7px; }
+}
+
+@keyframes buttonPulse {
+  from { box-shadow: 0 0 10px #e879f9; }
+  to { box-shadow: 0 0 35px #e879f9, 0 0 60px #818cf8; }
+}
+
+@keyframes buttonShine {
+  0%, 60% { left: -100%; }
+  100% { left: 160%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #opening *, #opening::before, #opening::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
 </style>
 </head>
 
@@ -243,25 +381,25 @@ footer { text-align: center; padding: 20px; color: #bba9df; font-size: 12px; }
   <span class="star" style="bottom:13%;right:18%;animation-delay:.5s">✧</span>
 
   <div style="font-size:45px">🌌 ✨ 🌙</div>
-  <p class="intro">Somewhere in this endless universe...</p>
-  <h1>GOUGA</h1>
+  <p class="intro">3alam sa8rouny 5ass b gougty...</p>
+  <h1>GOUGA BENTY</h1>
   <p class="intro">
-    One name.<br>
-    A thousand stars.<br>
-    A little universe made just for you. ❤️
+    esm wa7d🫀<br>
+    barcha 7obb ♾️<br>
+    7eja tet4akri biha ossoss ❤️
   </p>
 
   <button class="openBtn" onclick="enterUniverse()">
-    OPEN YOUR UNIVERSE 💌
+    l7asilouta , nabdou... 💌
   </button>
   <p style="font-size:12px;color:#c4b5fd;margin-top:25px">
-    A little surprise from Oussy ❤️
+    surprise sa8rouna mn ossoss ❤️
   </p>
 </div>
 
 <header>
   <div style="font-size:34px">🌙 💗 ✨</div>
-  <h1>Gouga's Secret Universe</h1>
+  <h1>✨️3alam gougty ✨️</h1>
   <div class="subtitle">
     A little universe made just for you, Gouga ❤️<br>
     <span class="small">12 missions • 12 surprises • One special star</span>
@@ -284,19 +422,19 @@ footer { text-align: center; padding: 20px; color: #bba9df; font-size: 12px; }
   <section class="panel" id="game">
     <div class="center">
       <div class="big-emoji">💌</div>
-      <h2>Welcome, Gouga!</h2>
-      <p>Your secret adventure is waiting. Ready to discover what's hidden among the stars?</p>
-      <button onclick="startGame()">Start the adventure ✨</button>
+      <h2>3aslema, Gouga!</h2>
+      <p>yalla nabdou lmou8amrat ta3na hyhyhyhyh 🤦🏻‍♂️</p>
+      <button onclick="startGame()">7a4ra ?✨</button>
     </div>
   </section>
 
   <section class="panel hidden" id="rewardPanel">
-    <h2>🎁 Your secret reward</h2>
+    <h2>🎁 l surprise lawla ☝️</h2>
     <p id="rewardText"></p>
   </section>
 </main>
 
-<footer>Made with love, from Oussy to Gouga ❤️</footer>
+<footer>Made with love, from Ossoss to Gouga ❤️</footer>
 
 <script>
 const $ = id => document.getElementById(id);
@@ -313,13 +451,13 @@ let sequenceStep = 0;
 let musicPlaying = false;
 
 const rewards = [
-  "One star for your beautiful smile. Keep shining, Gouga! ✨",
-  "A tiny reminder: you can do more than you think. 💗",
-  "You found a secret. There are still more surprises waiting! 🌙",
-  "Memories are little stars that stay with us. ⭐",
-  "Every chest hides a different kind of magic. 🎁",
-  "This letter is a small reminder that someone is cheering for you. 💌",
-  "You collected the hearts! Keep this little happiness with you. 💖",
+  "najma l 4a7ktek lmezyena , mat5alli chy i2ather fik Gouga! ✨",
+  "ta4kir s8ir: tnajmi ta3mly akther b barcha mn l tetsawri  💗",
+  "mzl barcha surpriset yestanou fik 🌙",
+  "bech twalli najma kabira gouga ⭐",
+  "ossoss yestana fik , enty najma lt4awi layly 🎁",
+  "n7ebkkkk 💌",
+  "twa7chtekkk💖",
   "Your memory is powerful. Trust yourself! 🧩",
   "You solved the star pattern. You're doing great! 🌟",
   "You chose your own surprise. That's your magic. 🎀",
