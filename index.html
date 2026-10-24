@@ -1,653 +1,650 @@
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#170c32">
-<title>Gouga: Beyond the Stars 💗</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Gouga ❤️</title>
 
 <style>
 :root {
-  --pink:#ffb8e7;
-  --purple:#a78bfa;
-  --glass:#21163edc;
+  --pink: #ff8bd1;
+  --purple: #a78bfa;
+  --gold: #ffe6a7;
+  --dark: #09071c;
 }
-* { box-sizing:border-box; }
+* { box-sizing: border-box; }
 body {
-  margin:0; min-height:100vh; overflow-x:hidden;
-  color:#fff; text-align:center;
-  font-family:"Trebuchet MS",Arial,sans-serif;
-  background:radial-gradient(ellipse at 50% 0%,#713b91,#271543 48%,#0b102a);
+  margin: 0;
+  min-height: 100vh;
+  color: white;
+  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(ellipse at top, #33205f 0%, transparent 55%),
+    linear-gradient(160deg, #080719, #17102e 60%, #09071c);
+  overflow-x: hidden;
 }
-#sky {
-  position:fixed; inset:0; z-index:0; pointer-events:none;
-  background-image:
-    radial-gradient(#fff 1px,transparent 1.5px),
-    radial-gradient(#fbb8ee 1px,transparent 1.5px),
-    radial-gradient(#b9c7ff 1px,transparent 1.5px);
-  background-size:43px 43px,71px 71px,107px 107px;
-  background-position:0 0,23px 19px,40px 62px;
-  opacity:.52; animation:skyMove 35s linear infinite;
+body::before {
+  content: "✦  ·  ✧  ·  ⋆  ·  ✦  ·  ✧  ·  ⋆";
+  position: fixed;
+  inset: 0;
+  color: #fff;
+  opacity: .22;
+  font-size: 28px;
+  line-height: 3.5;
+  letter-spacing: 20px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
 }
-@keyframes skyMove {
-  to { background-position:0 400px,23px 419px,40px 462px; }
+header {
+  text-align: center;
+  padding: 24px 14px 8px;
 }
-#app {
-  position:relative; z-index:1;
-  width:min(94%,680px); margin:20px auto; padding:20px 15px 28px;
-  border:1px solid #ffffff35; border-radius:27px;
-  background:var(--glass); box-shadow:0 0 45px #d66dff22;
-  backdrop-filter:blur(9px);
+h1 {
+  font-size: clamp(29px, 8vw, 48px);
+  margin: 8px 0;
+  color: #ffd4f1;
+  text-shadow: 0 0 20px #ff62c4;
 }
-h1 { color:#ffd8f1; font-size:clamp(27px,7vw,43px);
-  text-shadow:0 0 18px #fa80d5; margin:10px 0; }
-h2 { color:#ffd0ee; }
-p { line-height:1.75; }
-.hero { font-size:58px; animation:float 3s ease-in-out infinite; }
-@keyframes float { 50% { transform:translateY(-9px); } }
-button {
-  font:inherit; cursor:pointer; border:0; border-radius:24px;
-  padding:12px 17px; margin:6px 3px;
-  color:#4d214d; font-weight:bold;
-  background:linear-gradient(135deg,#ffe0f3,#ff9fda);
-  box-shadow:0 5px 16px #08061a55;
-  transition:transform .15s;
+.subtitle { color: #ded1ff; line-height: 1.6; }
+.music-btn, button {
+  border: 1px solid #ffffff45;
+  background: linear-gradient(135deg, #d946ef, #7c3aed);
+  color: white;
+  padding: 12px 17px;
+  border-radius: 15px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 17px #b34dff35;
 }
-button:active { transform:scale(.96); }
-button:disabled { opacity:.45; cursor:default; }
-button:focus-visible { outline:3px solid white; }
-.choice {
-  display:block; width:100%; max-width:510px; margin:10px auto;
-  color:white; font-weight:normal;
-  background:#ffffff10; border:1px solid #e5b9ff;
-  border-radius:15px; padding:14px;
+button:active { transform: scale(.97); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.music-btn { margin: 8px; }
+.container {
+  width: min(720px, 94%);
+  margin: 12px auto 45px;
 }
-.choice:hover { background:#ffffff20; }
-.card {
-  margin:15px 0; padding:17px;
-  border-radius:20px; border:1px solid #ffffff28;
-  background:#ffffff0b;
+.panel {
+  background: #ffffff0d;
+  border: 1px solid #ffffff25;
+  border-radius: 24px;
+  padding: 22px 17px;
+  margin: 14px 0;
+  box-shadow: 0 12px 45px #0003;
+  backdrop-filter: blur(10px);
 }
-.pill {
-  display:inline-block; border-radius:20px; padding:6px 11px;
-  margin:3px; background:#ffffff16; color:#ffe0f4; font-size:13px;
+.progress-row {
+  display: flex;
+  justify-content: space-between;
+  color: #e5d7ff;
+  font-size: 13px;
+  margin-bottom: 9px;
 }
-.muted { color:#ddcceF; font-size:13px; }
-.bar { height:8px; background:#ffffff20; border-radius:20px; overflow:hidden; }
-#progress { height:100%; width:0; background:linear-gradient(90deg,#ff9bdc,#fff0af); transition:width .5s; }
-#musicBtn { background:#ffffff17; color:white; border:1px solid #ffffff50; }
-video { width:100%; max-height:380px; border-radius:17px; background:#090718; margin:10px 0; }
-.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; }
+.progress {
+  height: 9px;
+  background: #ffffff18;
+  border-radius: 20px;
+  overflow: hidden;
+}
+#bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff75ca, #b7a0ff, #ffe6a7);
+  transition: width .4s;
+}
+h2 { color: #ffd4f1; margin-top: 5px; }
+p { line-height: 1.75; color: #eee6ff; }
+.small { font-size: 13px; color: #cfc1f4; }
+.options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 18px 0;
+}
+.options button { background: #ffffff12; text-align: left; }
+.options button:hover { background: #b34dff50; }
+.message {
+  min-height: 25px;
+  color: #ffe6a7;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin: 18px 0;
+}
 .tile {
-  min-width:0; min-height:76px; font-size:30px; padding:8px 2px;
-  color:white; background:#ffffff10; border:1px solid #ffffff40;
-  border-radius:15px;
+  min-height: 70px;
+  font-size: 25px;
+  background: #ffffff12;
 }
-.tile.done { background:#ffb1e833; border-color:#ffc6ed; }
-.memorygrid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; }
-.memory { font-size:25px; min-height:62px; padding:8px 1px; color:white;
-  background:#ffffff12; border:1px solid #dcb9ff; border-radius:12px; }
-.letter { background:#fff0f8; color:#55234e; text-align:left;
-  padding:18px; border-radius:17px; line-height:1.9; }
-.letter h2 { color:#b52e82; text-align:center; }
-.hidden { display:none !important; }
-#feedback { min-height:24px; color:#ffdbf2; }
-#glitch {
-  position:fixed; inset:0; z-index:10; display:none; overflow:auto;
-  padding:25vh 12px 30px; background:#080515; color:#ffb6e6;
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 18px 0;
 }
-#glitch.active { display:block; animation:glitch .18s steps(2) 8; }
-@keyframes glitch {
-  0% { transform:translateX(0); text-shadow:4px 0 red,-4px 0 cyan; }
-  50% { transform:translateX(3px); text-shadow:-4px 0 red,4px 0 cyan; }
-  100% { transform:translateX(-2px); }
+.card {
+  min-height: 67px;
+  padding: 5px;
+  font-size: 25px;
+  background: #ffffff12;
 }
-#skyCanvas { width:100%; height:280px; display:block; }
-.fragment { opacity:.45; }
-.fragment.found { opacity:1; color:#ffb8e7; text-shadow:0 0 12px #ff8dd9; }
-footer { margin-top:24px; color:#d7c5ed; font-size:12px; }
+.chests { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.chests button { font-size: 32px; padding: 20px 5px; }
+.video {
+  width: 100%;
+  max-height: 380px;
+  border-radius: 16px;
+  background: #000;
+  margin: 12px 0;
+}
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #ffffff35;
+  background: #100b27;
+  color: white;
+  font-size: 17px;
+  margin: 10px 0;
+}
+.center { text-align: center; }
+.big-emoji { font-size: 52px; margin: 12px 0; }
+#starCanvas {
+  width: 100%;
+  display: block;
+  height: 260px;
+  border-radius: 18px;
+  background: #080719;
+  margin: 15px 0;
+}
+#letter {
+  white-space: pre-line;
+  line-height: 2;
+  color: #ffe6f7;
+  background: #ffffff0a;
+  padding: 16px;
+  border-radius: 15px;
+}
+.hidden { display: none !important; }
+footer { text-align: center; padding: 20px; color: #bba9df; font-size: 12px; }
 </style>
 </head>
 
 <body>
-<div id="sky"></div>
-
-<main id="app">
-  <div class="hero">🌙✨💗</div>
-  <h1>Gouga: Beyond the Stars</h1>
-  <p>A secret universe, created just for you, ya Assoula. 🌸</p>
-
-  <button id="musicBtn" onclick="toggleMusic()">🎵 Play our song</button>
-  <audio id="music" loop preload="none">
+<header>
+  <div style="font-size:34px">🌙 💗 ✨</div>
+  <h1>Gouga's Secret Universe</h1>
+  <div class="subtitle">
+    A little universe made just for you, Gouga ❤️<br>
+    <span class="small">12 missions • 12 surprises • One special star</span>
+  </div>
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵 Play our music</button>
+  <audio id="music" loop>
     <source src="music.mp3" type="audio/mpeg">
   </audio>
+</header>
 
-  <div class="bar"><div id="progress"></div></div>
-  <p>
-    <span class="pill" id="stageLabel">The adventure begins</span>
-    <span class="pill" id="scoreLabel">⭐ 0 stars</span>
-  </p>
+<main class="container">
+  <section class="panel">
+    <div class="progress-row">
+      <span id="missionLabel">Mission 1 of 12</span>
+      <span id="scoreLabel">Stars: 0 ⭐</span>
+    </div>
+    <div class="progress"><div id="bar"></div></div>
+  </section>
 
-  <section id="screen"></section>
-  <footer>Made with love by Oussy ❤️</footer>
+  <section class="panel" id="game">
+    <div class="center">
+      <div class="big-emoji">💌</div>
+      <h2>Welcome, Gouga!</h2>
+      <p>Your secret adventure is waiting. Ready to discover what's hidden among the stars?</p>
+      <button onclick="startGame()">Start the adventure ✨</button>
+    </div>
+  </section>
+
+  <section class="panel hidden" id="rewardPanel">
+    <h2>🎁 Your secret reward</h2>
+    <p id="rewardText"></p>
+  </section>
 </main>
 
-<div id="glitch" aria-live="polite">
-  <h1>⚠ SIGNAL FOUND ⚠</h1>
-  <p id="glitchText">Wait... this was never part of the game.</p>
-</div>
+<footer>Made with love, from Oussy to Gouga ❤️</footer>
 
 <script>
-const screen = document.getElementById("screen");
-const music = document.getElementById("music");
-const TOTAL = 5;
-let stage = 0;
-let score = 0;
-let fragments = [];
-let heartsFound = [];
-let memoryDeck = [];
-let memoryOpen = [];
-let memoryMatched = [];
-let memoryLock = false;
-let chestsOpened = [];
-let musicPlaying = false;
-let finalTimer = null;
-
 const $ = id => document.getElementById(id);
+const game = $("game");
+let current = 0;
+let score = 0;
+let hearts = 0;
+let openedTiles = new Set();
+let matched = [];
+let firstCard = null;
+let lockCards = false;
+let sequence = [];
+let sequenceStep = 0;
+let musicPlaying = false;
 
-function updateHUD() {
-  $("scoreLabel").textContent = "⭐ " + score + " stars";
-  $("stageLabel").textContent = stage ? "World " + stage + " / " + TOTAL : "The adventure begins";
-  $("progress").style.width = (stage / TOTAL * 100) + "%";
+const rewards = [
+  "One star for your beautiful smile. Keep shining, Gouga! ✨",
+  "A tiny reminder: you can do more than you think. 💗",
+  "You found a secret. There are still more surprises waiting! 🌙",
+  "Memories are little stars that stay with us. ⭐",
+  "Every chest hides a different kind of magic. 🎁",
+  "This letter is a small reminder that someone is cheering for you. 💌",
+  "You collected the hearts! Keep this little happiness with you. 💖",
+  "Your memory is powerful. Trust yourself! 🧩",
+  "You solved the star pattern. You're doing great! 🌟",
+  "You chose your own surprise. That's your magic. 🎀",
+  "A secret signal from Oussy has reached you. 📡",
+  "You made it to the end. Now look up at the stars, Gouga. 🌌"
+];
+
+function updateProgress() {
+  $("missionLabel").textContent = `Mission ${Math.min(current + 1, 12)} of 12`;
+  $("scoreLabel").textContent = `Stars: ${score} ⭐`;
+  $("bar").style.width = `${(current / 12) * 100}%`;
+}
+function startGame() {
+  current = 0;
+  score = 0;
+  renderMission();
+}
+function award(points = 1) {
+  score += points;
+  $("scoreLabel").textContent = `Stars: ${score} ⭐`;
+}
+function setGame(title, description, html) {
+  game.innerHTML = `
+    <div class="small">MISSION ${current + 1} / 12</div>
+    <h2>${title}</h2>
+    <p>${description}</p>
+    ${html}
+    <div class="message" id="feedback" aria-live="polite"></div>
+  `;
+  updateProgress();
+}
+function feedback(text) {
+  const el = $("feedback");
+  if (el) el.textContent = text;
+}
+function completeMission(message = "Mission complete! ⭐") {
+  feedback(message);
+  const old = current;
+  current++;
+  award();
+  $("rewardPanel").classList.remove("hidden");
+  $("rewardText").textContent = rewards[old] || "A star for you! ⭐";
+  const btn = document.createElement("button");
+  btn.textContent = current >= 12 ? "See the final surprise 🌌" : "Next mission ➜";
+  btn.style.marginTop = "12px";
+  btn.onclick = renderMission;
+  game.appendChild(btn);
+  $("bar").style.width = `${(current / 12) * 100}%`;
+  $("missionLabel").textContent = current >= 12 ? "Final surprise" : `Mission ${current + 1} of 12`;
+}
+function renderMission() {
+  $("rewardPanel").classList.add("hidden");
+  updateProgress();
+  switch (current) {
+    case 0: mission1(); break;
+    case 1: mission2(); break;
+    case 2: mission3(); break;
+    case 3: mission4(); break;
+    case 4: mission5(); break;
+    case 5: mission6(); break;
+    case 6: mission7(); break;
+    case 7: mission8(); break;
+    case 8: mission9(); break;
+    case 9: mission10(); break;
+    case 10: mission11(); break;
+    default: mission12(); break;
+  }
 }
 
-function awardStar() {
-  score++;
-  updateHUD();
+// MISSION 1 — BAC BOOST
+function mission1() {
+  setGame("The BAC Star 🎓",
+    "Gouga, when a difficult question appears, what should you do?",
+    `<div class="options">
+      <button onclick="answer1(false)">A. Give up immediately 😔</button>
+      <button onclick="answer1(true)">B. Breathe, think, and try step by step 💪</button>
+      <button onclick="answer1(false)">C. Decide that I can't do it 🙈</button>
+    </div>`);
+}
+function answer1(correct) {
+  if (correct) {
+    completeMission("Correct! One exercise at a time, one step at a time. You can do it, Gouga! ❤️");
+  } else feedback("Try again, future bachelière! Believe in yourself 🌷");
+}
+
+// MISSION 2 — FIND THE STARS
+function mission2() {
+  openedTiles = new Set();
+  const symbols = ["🌙","🌸","⭐","🦋","💎","✨","🌷","💗","☁️"];
+  setGame("The Hidden Garden 🌷",
+    "Tap all 9 garden tiles. Find the special stars hidden inside!",
+    `<div class="tiles">${symbols.map((s,i) =>
+      `<button class="tile" id="tile${i}" onclick="openTile(${i},'${s}')">❔</button>`
+    ).join("")}</div>
+    <p class="small" id="tileCount">Tiles discovered: 0 / 9</p>`);
+}
+function openTile(i, symbol) {
+  if (openedTiles.has(i)) return;
+  openedTiles.add(i);
+  const tile = $("tile" + i);
+  tile.textContent = symbol;
+  tile.disabled = true;
+  $("tileCount").textContent = `Tiles discovered: ${openedTiles.size} / 9`;
+  if (["⭐","✨","💗","💎"].includes(symbol)) feedback("You found a little piece of magic! ✨");
+  if (openedTiles.size === 9) completeMission("The whole garden is glowing because you found every secret! 🌸");
+}
+
+// MISSION 3 — EMOJI CODE
+function mission3() {
+  setGame("Decode the Secret 💌",
+    "What does this little code mean?",
+    `<div class="center" style="font-size:38px">🌟 + 😊 + 💗</div>
+    <div class="options">
+      <button onclick="answer3(false)">A. A rainy Monday ☔</button>
+      <button onclick="answer3(true)">B. A special person who brings happiness ✨</button>
+      <button onclick="answer3(false)">C. A maths formula 📐</button>
+    </div>`);
+}
+function answer3(ok) {
+  if (ok) completeMission("Exactly! Some people make ordinary days feel magical. 💗");
+  else feedback("Look at the stars, smile, and heart again 😊");
+}
+
+// MISSION 4 — MEMORY MATCH
+function mission4() {
+  const symbols = ["🌙","🌙","💗","💗","⭐","⭐","🌸","🌸"];
+  const shuffled = symbols.map((v,i)=>({v,sort:Math.random()}))
+    .sort((a,b)=>a.sort-b.sort).map(o=>o.v);
+  matched = [];
+  firstCard = null;
+  lockCards = false;
+  setGame("Memory of Stars 🧩",
+    "Find all 4 matching pairs. Tap two cards at a time.",
+    `<div class="cards">${shuffled.map((s,i)=>
+      `<button class="card" id="card${i}" data-symbol="${s}" onclick="flipCard(${i})">❔</button>`
+    ).join("")}</div>
+    <p class="small" id="pairCount">Pairs found: 0 / 4</p>`);
+}
+function flipCard(i) {
+  if (lockCards || matched.includes(i)) return;
+  const card = $("card"+i);
+  card.textContent = card.dataset.symbol;
+  if (firstCard === null) {
+    firstCard = i;
+    return;
+  }
+  const first = firstCard;
+  if ($("card"+first).dataset.symbol === card.dataset.symbol) {
+    matched.push(first, i);
+    firstCard = null;
+    $("pairCount").textContent = `Pairs found: ${matched.length / 2} / 4`;
+    if (matched.length === 8) completeMission("Perfect memory! All the pairs found. ⭐");
+  } else {
+    lockCards = true;
+    setTimeout(() => {
+      const a = $("card"+first), b = $("card"+i);
+      if (a && b) { a.textContent = "❔"; b.textContent = "❔"; }
+      firstCard = null;
+      lockCards = false;
+    }, 700);
+  }
+}
+
+// MISSION 5 — TREASURE CHESTS
+function mission5() {
+  setGame("Three Mystery Chests 🎁",
+    "Pick one chest. Every choice has a surprise!",
+    `<div class="chests">
+      <button onclick="openChest(0)">🎁</button>
+      <button onclick="openChest(1)">🎀</button>
+      <button onclick="openChest(2)">💝</button>
+    </div>`);
+}
+function openChest(n) {
+  const messages = [
+    "Surprise: may your days be full of peace and happy moments. 🌷",
+    "Surprise: may your hard work bring you the success you dream of. 🎓",
+    "Surprise: never forget that you deserve kindness and happiness. 💗"
+  ];
+  completeMission(messages[n]);
+}
+
+// MISSION 6 — SECRET ENVELOPE
+function mission6() {
+  setGame("The Secret Envelope 💌",
+    "To unlock Oussy's little message, enter the magic word: the nickname in this game's title!",
+    `<div class="center big-emoji">✉️</div>
+    <input id="secretWord" placeholder="Type the secret word..." maxlength="30">
+    <button onclick="checkSecret()">Open the envelope 💌</button>`);
+}
+function checkSecret() {
+  const word = $("secretWord").value.trim().toLowerCase();
+  if (word === "gouga") {
+    completeMission("Dear Gouga, I hope this little universe makes you smile. You deserve beautiful things. ❤️");
+  } else feedback("Hint: G O U G A 😉");
+}
+
+// MISSION 7 — CATCH THE HEARTS
+function mission7() {
+  hearts = 0;
+  setGame("Catch My Hearts 💗",
+    "Tap 5 hearts to collect them. Each heart is a little wish for you!",
+    `<div class="tiles">
+      ${Array.from({length:9},(_,i)=>
+        `<button class="tile" id="heart${i}" onclick="catchHeart(${i})">${["💗","✨","🌸","💖","⭐","💗","🌙","💞","💗"][i]}</button>`
+      ).join("")}
+    </div>
+    <p class="small" id="heartCount">Hearts collected: 0 / 5</p>`);
+}
+function catchHeart(i) {
+  const b = $("heart"+i);
+  if (b.disabled) return;
+  b.disabled = true;
+  b.textContent = "💫";
+  hearts++;
+  $("heartCount").textContent = `Hearts collected: ${hearts} / 5`;
+  if (hearts >= 5) completeMission("Five hearts for five wishes: joy, courage, health, peace, and success. 💖");
+}
+
+// MISSION 8 — THE MEMORY CODE
+function mission8() {
+  sequence = [2,0,3];
+  sequenceStep = 0;
+  setGame("The Memory Code 🔐",
+    "Remember this sequence, then enter the numbers in the same order.",
+    `<div class="center" style="font-size:30px;letter-spacing:8px">3 - 1 - 4</div>
+    <input id="codeInput" inputmode="numeric" placeholder="Enter 314">
+    <button onclick="checkCode()">Unlock the code 🔓</button>`);
+}
+function checkCode() {
+  if ($("codeInput").value.trim() === "314") {
+    completeMission("Unlocked! Every little step counts. Keep believing in yourself. 🔐");
+  } else feedback("Look at the sequence again: 3 - 1 - 4 😊");
+}
+
+// MISSION 9 — MOON PUZZLE
+function mission9() {
+  setGame("The Moon Puzzle 🌙",
+    "Tap the stars in the right order: first, second, third.",
+    `<div class="tiles">
+      <button class="tile" onclick="moonTap(2)">🌟</button>
+      <button class="tile" onclick="moonTap(1)">⭐</button>
+      <button class="tile" onclick="moonTap(3)">✨</button>
+    </div>
+    <p class="small">Hint: ⭐ then 🌟 then ✨</p>`);
+  sequenceStep = 0;
+}
+function moonTap(n) {
+  const answer = [1,2,3];
+  if (n === answer[sequenceStep]) {
+    sequenceStep++;
+    if (sequenceStep === 3) completeMission("The stars are aligned! You solved the moon puzzle. 🌙");
+    else feedback("Correct! Keep going... ⭐");
+  } else {
+    sequenceStep = 0;
+    feedback("Not quite! Start again: ⭐ then 🌟 then ✨");
+  }
+}
+
+// MISSION 10 — DESTINY
+function mission10() {
+  setGame("Choose Your Destiny 🎀",
+    "Choose one of these doors. Your next surprise is waiting!",
+    `<div class="chests">
+      <button onclick="destiny(0)">🌸</button>
+      <button onclick="destiny(1)">🌙</button>
+      <button onclick="destiny(2)">⭐</button>
+    </div>`);
+}
+function destiny(n) {
+  const lines = [
+    "Your flower wish: may you always find reasons to smile. 🌸",
+    "Your moon wish: may peaceful nights and brighter mornings find you. 🌙",
+    "Your star wish: may your dreams lead you to wonderful places. ⭐"
+  ];
+  completeMission(lines[n]);
+}
+
+// MISSION 11 — PERSONAL VIDEO
+function mission11() {
+  setGame("A Signal from Oussy 📡",
+    "A little message from your secret universe. If you have a personal video, it will appear here.",
+    `<div class="center">📡 <p>Signal found...</p></div>
+    <video class="video" controls playsinline preload="metadata">
+      <source src="video3.mp4" type="video/mp4">
+      Your browser cannot play this video.
+    </video>
+    <p class="small">If the video is not uploaded yet, you can still continue.</p>
+    <button onclick="completeMission('Signal received! Sending you courage, peace, and a little smile. ❤️')">Continue ✨</button>`);
+}
+
+// MISSION 12 — STARS SPELL GOUGA
+function mission12() {
+  setGame("GOUGA: Written in the Stars 🌌",
+    "You made it through every mission. Watch the stars gather to spell your name.",
+    `<canvas id="starCanvas" width="700" height="260"></canvas>
+    <div class="center">
+      <h2 style="font-size:27px">G O U G A ✨</h2>
+      <p>Written in the stars, forever in my heart. ❤️</p>
+      <button onclick="showLetter()">Open your final letter 💌</button>
+      <div id="letterBox" class="hidden">
+        <div id="letter">Dear Gouga ❤️
+
+I made this little universe just to bring you a smile.
+Whatever happens, I wish you happiness, peace, and success.
+Believe in yourself, especially when your BAC feels difficult.
+One exercise at a time. One day at a time. You can do it.
+
+May Allah guide you, protect you, and make your dreams come true.
+Keep shining, Gouga. The world needs your light. 🌙✨
+
+From Oussy, with a special place for you in my heart. ❤️</div>
+        <video class="video" controls playsinline preload="metadata">
+          <source src="video1.mp4" type="video/mp4">
+        </video>
+        <video class="video" controls playsinline preload="metadata">
+          <source src="video2.mp4" type="video/mp4">
+        </video>
+        <p class="center">🎓 Future Bachelière • ⭐ Star of this universe</p>
+        <button onclick="location.reload()">Play again 🔁</button>
+      </div>
+    </div>`);
+  animateName();
+}
+
+function showLetter() {
+  $("letterBox").classList.remove("hidden");
+  $("letterBox").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function animateName() {
+  const canvas = $("starCanvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const w = canvas.width, h = canvas.height;
+
+  const off = document.createElement("canvas");
+  off.width = w; off.height = h;
+  const octx = off.getContext("2d");
+  octx.fillStyle = "white";
+  octx.textAlign = "center";
+  octx.textBaseline = "middle";
+  octx.font = "bold 112px Arial";
+  octx.fillText("GOUGA", w/2, h/2);
+
+  const data = octx.getImageData(0,0,w,h).data;
+  const targets = [];
+  for (let y=20; y<h-10; y+=4) {
+    for (let x=10; x<w-10; x+=4) {
+      if (data[(y*w+x)*4+3] > 100) targets.push({x,y});
+    }
+  }
+
+  const particles = targets.map(t => ({
+    x: Math.random()*w, y: Math.random()*h,
+    tx:t.x, ty:t.y, r:Math.random()*1.6+0.7,
+    phase:Math.random()*6
+  }));
+
+  let frame = 0;
+  function draw() {
+    if (!document.getElementById("starCanvas")) return;
+    ctx.fillStyle = "rgba(8,7,25,0.28)";
+    ctx.fillRect(0,0,w,h);
+
+    // Background stars
+    for(let i=0;i<35;i++) {
+      const x = (i*97 + frame*0.25) % w;
+      const y = (i*53) % h;
+      ctx.fillStyle = "#ffffff80";
+      ctx.fillRect(x,y,1.5,1.5);
+    }
+
+    particles.forEach(p => {
+      p.x += (p.tx-p.x)*0.035;
+      p.y += (p.ty-p.y)*0.035;
+      const twinkle = 0.55 + Math.abs(Math.sin(frame*0.04+p.phase))*0.45;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle = `rgba(255,${180+Math.floor(twinkle*75)},255,${twinkle})`;
+      ctx.shadowBlur = 8*twinkle;
+      ctx.shadowColor = "#f28cff";
+      ctx.fill();
+    });
+    ctx.shadowBlur=0;
+    frame++;
+    requestAnimationFrame(draw);
+  }
+  draw();
 }
 
 function toggleMusic() {
-  if (music.paused) {
+  const music = $("music");
+  if (!musicPlaying) {
     music.play().then(() => {
       musicPlaying = true;
-      $("musicBtn").textContent = "⏸ Pause music";
+      $("musicBtn").textContent = "⏸ Pause our music";
     }).catch(() => {
-      alert("Ajoute music.mp3 à ton dépôt GitHub, puis réessaie. 🎵");
+      $("musicBtn").textContent = "Tap to play 🎵";
+      alert("Upload a file named music.mp3 beside index.html, then tap Play again.");
     });
   } else {
     music.pause();
     musicPlaying = false;
-    $("musicBtn").textContent = "🎵 Play our song";
+    $("musicBtn").textContent = "🎵 Play our music";
   }
 }
-
-function showHome() {
-  stage = 0;
-  updateHUD();
-  screen.innerHTML = `
-    <div class="card">
-      <div class="hero">🌌</div>
-      <h2>A message from another universe...</h2>
-      <p>
-        "One day, a star disappeared from the sky.
-        To bring it back, someone special must discover
-        five magical worlds."
-      </p>
-      <p>Ya Gouga, are you ready to find your stars? 💗</p>
-      <button onclick="startAdventure()">START THE ADVENTURE 🚀</button>
-      <p class="muted">Tip: turn on the music for the full experience.</p>
-    </div>`;
-}
-
-function startAdventure() {
-  stage = 1;
-  updateHUD();
-  worldOne();
-}
-
-/* WORLD 1: choose the right path */
-function worldOne() {
-  screen.innerHTML = `
-    <div class="card">
-      <span class="pill">WORLD 1 · THE FIRST LIGHT</span>
-      <h2>🌸 Choose your path</h2>
-      <p>A magical door asks you one question...</p>
-      <p>When the Bac feels difficult, what should you remember?</p>
-      <button class="choice" onclick="answerOne(false)">"I'm not capable." 😔</button>
-      <button class="choice" onclick="answerOne(true)">"I can try, learn and keep going." 💪</button>
-      <button class="choice" onclick="answerOne(false)">"I'll give up before I start." 🌧️</button>
-      <p id="feedback"></p>
-    </div>`;
-}
-
-function answerOne(correct) {
-  if (!correct) {
-    $("feedback").textContent =
-      "Try again, princess! Enti tnajmi ta3mel barcha ki ta3ti rou7ek forsa. 🌷";
-    return;
-  }
-  awardStar();
-  screen.innerHTML = `
-    <div class="card">
-      <div class="hero">🌟</div>
-      <h2>The first star is yours!</h2>
-      <p>Inchallah Rabi ywaf9ek fi el Bac. Step by step, ya battala. 🤲</p>
-      <button onclick="worldTwo()">Enter the Secret Garden ➜</button>
-    </div>`;
-}
-
-/* WORLD 2: hidden hearts */
-function worldTwo() {
-  stage = 2;
-  updateHUD();
-  heartsFound = [];
-  const garden = ["🌿","💗","🌙","🌸","⭐","💖","🍃","✨","💕"];
-  screen.innerHTML = `
-    <div class="card">
-      <span class="pill">WORLD 2 · SECRET GARDEN</span>
-      <h2>🔎 Find the hidden hearts</h2>
-      <p>5 hearts are hiding in the garden. Tap each leaf to explore it.</p>
-      <div class="grid" id="garden"></div>
-      <p id="heartCount">💗 0 / 5 hearts</p>
-      <p id="feedback"></p>
-      <button id="gardenNext" class="hidden" onclick="worldThree()">Follow the stars ➜</button>
-    </div>`;
-  garden.forEach((symbol, i) => {
-    const b = document.createElement("button");
-    b.className = "tile";
-    b.textContent = "❔";
-    b.setAttribute("aria-label", "Explore garden tile " + (i+1));
-    b.onclick = () => {
-      if (b.disabled) return;
-      b.disabled = true;
-      b.classList.add("done");
-      b.textContent = symbol;
-      if (["💗","💖","💕","🌸","✨"].includes(symbol)) {
-        heartsFound.push(i);
-        $("heartCount").textContent = "💗 " + heartsFound.length + " / 5 discoveries";
-      }
-      if (document.querySelectorAll("#garden button:not(:disabled)").length === 0) {
-        awardStar();
-        $("feedback").textContent = "You explored every corner. The garden remembers your kindness. 🌷";
-        $("gardenNext").classList.remove("hidden");
-      }
-    };
-    $("garden").appendChild(b);
-  });
-}
-
-/* WORLD 3: decode the message */
-function worldThree() {
-  stage = 3;
-  updateHUD();
-  screen.innerHTML = `
-    <div class="card">
-      <span class="pill">WORLD 3 · THE STAR CODE</span>
-      <h2>🧩 Decode the magic</h2>
-      <p>💗 + 📚 + 🎓 = ?</p>
-      <p>Which message is hidden in these symbols?</p>
-      <button class="choice" onclick="decode(false)">A homework emergency 😭</button>
-      <button class="choice" onclick="decode(true)">Love, learning and a bright future ✨</button>
-      <button class="choice" onclick="decode(false)">A sleepy dragon 🐉</button>
-      <p id="feedback"></p>
-    </div>`;
-}
-
-function decode(correct) {
-  if (!correct) {
-    $("feedback").textContent = "Think of your dreams, your effort, and the future you deserve. 🌟";
-    return;
-  }
-  awardStar();
-  screen.innerHTML = `
-    <div class="card">
-      <div class="hero">🔓✨</div>
-      <h2>Secret code unlocked!</h2>
-      <p>El Bac étape fi tri9ek, mouch kol 7yetek. A3ti rou7ek wa9tha w far7a b kol progrès. 💗</p>
-      <p class="muted">A mysterious message has been added to your collection.</p>
-      <button onclick="worldFour()">Enter the Memory Room ➜</button>
-    </div>`;
-}
-
-/* WORLD 4: memory cards */
-function worldFour() {
-  stage = 4;
-  updateHUD();
-  const symbols = ["🌙","💗","⭐","🌸","🌙","💗","⭐","🌸"];
-  memoryDeck = symbols.slice().sort(() => Math.random() - 0.5);
-  memoryOpen = [];
-  memoryMatched = [];
-  memoryLock = false;
-
-  screen.innerHTML = `
-    <div class="card">
-      <span class="pill">WORLD 4 · MEMORY ROOM</span>
-      <h2>🃏 Match the stars</h2>
-      <p>Flip two cards at a time and find all four pairs.</p>
-      <div class="memorygrid" id="memoryGrid"></div>
-      <p id="pairCount">Pairs found: 0 / 4</p>
-      <p id="feedback"></p>
-      <button id="memoryNext" class="hidden" onclick="worldFive()">Open the final portal ➜</button>
-    </div>`;
-
-  memoryDeck.forEach((symbol, i) => {
-    const b = document.createElement("button");
-    b.className = "memory";
-    b.textContent = "❔";
-    b.setAttribute("aria-label", "Memory card " + (i+1));
-    b.onclick = () => flipMemory(i, b);
-    $("memoryGrid").appendChild(b);
-  });
-}
-
-function flipMemory(i, button) {
-  if (memoryLock || memoryMatched.includes(i) || memoryOpen.some(x => x.i === i)) return;
-  button.textContent = memoryDeck[i];
-  memoryOpen.push({i, button});
-  if (memoryOpen.length !== 2) return;
-
-  memoryLock = true;
-  const [a, b] = memoryOpen;
-
-  if (memoryDeck[a.i] === memoryDeck[b.i]) {
-    memoryMatched.push(a.i, b.i);
-    a.button.disabled = true;
-    b.button.disabled = true;
-    a.button.classList.add("done");
-    b.button.classList.add("done");
-    memoryOpen = [];
-    memoryLock = false;
-    $("pairCount").textContent = "Pairs found: " + (memoryMatched.length/2) + " / 4";
-
-    if (memoryMatched.length === 8) {
-      awardStar();
-      $("feedback").textContent = "Perfect! Your memory unlocked another star. ✨";
-      $("memoryNext").classList.remove("hidden");
-    }
-  } else {
-    setTimeout(() => {
-      a.button.textContent = "❔";
-      b.button.textContent = "❔";
-      memoryOpen = [];
-      memoryLock = false;
-    }, 750);
-  }
-}
-
-/* WORLD 5: three treasures */
-function worldFive() {
-  stage = 5;
-  updateHUD();
-  chestsOpened = [];
-  screen.innerHTML = `
-    <div class="card">
-      <span class="pill">WORLD 5 · THE LAST TREASURE</span>
-      <h2>🎁 Choose your mystery boxes</h2>
-      <p>Each box hides a little gift. Open all three to unlock the secret ending.</p>
-      <div class="grid">
-        <button class="tile" onclick="openChest(0,this)">🎁</button>
-        <button class="tile" onclick="openChest(1,this)">🎀</button>
-        <button class="tile" onclick="openChest(2,this)">💝</button>
-      </div>
-      <p id="feedback">Choose a treasure, ya Gouga. 💗</p>
-      <button id="endingBtn" class="hidden" onclick="startGlitch()">Unlock the final secret 🌌</button>
-    </div>`;
-}
-
-function openChest(n, button) {
-  if (chestsOpened.includes(n)) return;
-  chestsOpened.push(n);
-  button.disabled = true;
-  button.textContent = "✨";
-
-  const gifts = [
-    "🌷 Gift 1: You deserve gentle days and people who cheer for you.",
-    "🎓 Gift 2: Inchallah Rabi yfar7ek b najahik. Keep believing in yourself.",
-    "💌 Gift 3: Someone took time to make this little universe just for you."
-  ];
-  $("feedback").textContent = gifts[n];
-
-  if (chestsOpened.length === 1) awardStar();
-  if (chestsOpened.length === 3) {
-    $("endingBtn").classList.remove("hidden");
-    $("feedback").textContent += " All treasures found! The universe is changing...";
-  }
-}
-
-/* Plot twist: a fake game glitch, followed by the personal video */
-function startGlitch() {
-  const layer = $("glitch");
-  layer.classList.add("active");
-  $("glitchText").textContent = "Wait... this mission was never part of the game.";
-  setTimeout(() => {
-    $("glitchText").textContent = "SIGNAL DETECTED: OUSSY 💗";
-  }, 1100);
-  setTimeout(() => {
-    layer.classList.remove("active");
-    showFinalVideo();
-  }, 2700);
-}
-
-function showFinalVideo() {
-  screen.innerHTML = `
-    <div class="card">
-      <div class="hero">💗📡🌌</div>
-      <h2>A message from Oussy...</h2>
-      <p>"Gouga, the last star is not in the sky. It's in this message."</p>
-      <video controls playsinline preload="metadata">
-        <source src="video3.mp4" type="video/mp4">
-        Your browser cannot play this video.
-      </video>
-      <p class="muted">If the video doesn't appear, check that video3.mp4 is uploaded to GitHub.</p>
-      <button onclick="revealLetter()">Discover the final letter 💌</button>
-    </div>`;
-}
-
-/* Seven fragments collected into the final letter */
-function revealLetter() {
-  fragments = [];
-  screen.innerHTML = `
-    <div class="card">
-      <div class="hero">📜✨</div>
-      <h2>The Library of Unsent Letters</h2>
-      <p>Tap the seven stars to reveal the words hidden inside them.</p>
-      <div id="fragmentArea" style="font-size:24px;line-height:2.3"></div>
-      <p id="fragmentMessage"></p>
-      <button id="letterBtn" class="hidden" onclick="showLetter()">Read your letter ❤️</button>
-    </div>`;
-
-  const words = ["YA","GOUGA,","TH9I","FI","ROU7EK","DIMA,","PRINCESS"];
-  words.forEach((word, i) => {
-    const b = document.createElement("button");
-    b.className = "fragment";
-    b.textContent = "✦";
-    b.setAttribute("aria-label", "Reveal secret word " + (i+1));
-    b.onclick = () => {
-      if (fragments.includes(i)) return;
-      fragments.push(i);
-      b.textContent = word;
-      b.classList.add("found");
-      if (fragments.length === words.length) {
-        $("fragmentMessage").textContent = "All seven fragments found. A letter is waiting for you. 💗";
-        $("letterBtn").classList.remove("hidden");
-        awardStar();
-      }
-    };
-    $("fragmentArea").appendChild(b);
-  });
-}
-
-function showLetter() {
-  screen.innerHTML = `
-    <div class="letter">
-      <h2>For my dear Gouga 💌</h2>
-      <p>Ya Assoula, ya Gouga ❤️</p>
-      <p>
-        Bhy, n7eb n9ollek haja men 9albi:
-        ena n2amen bik barcha. El Bac mar7la mohema,
-        ama ma y7addedch 9imtek. Enti akther men note,
-        akther men résultat, w akther men nhar s3ib.
-      </p>
-      <p>
-        A3mel effort, rta7 ki testa7a9, w dima th9i
-        fi rou7ek. Inchallah Rabi ywaf9ek, ysahel 3lik
-        w yfar7ek b najahik. 🤲🎓
-      </p>
-      <p>
-        W مهما تبدلت الأيام، ntemennalek el khir men
-        9albi. Nheb nchoufek dima tetbassem, ta7lem
-        w tet9addem. You deserve beautiful things,
-        ya princess. 🌸
-      </p>
-      <p>
-        Ken nhar t3ebti, etdhakkri elli el courage
-        mouch ma3neha ma t5afech; courage howa tkammel
-        7atta ki tkoun 5ayfa.
-      </p>
-      <p>
-        This little universe is a small reminder that
-        someone is cheering for you. One step at a time.
-        You can do it. 💗
-      </p>
-      <p style="text-align:right">
-        With love and all my best wishes,<br>
-        <b>Ton Oussy ❤️</b>
-      </p>
-      <button onclick="showConstellation()">One last surprise 🌠</button>
-    </div>`;
-}
-
-/* Stars turn into GOUGA */
-function showConstellation() {
-  screen.innerHTML = `
-    <div class="card">
-      <div class="hero">🌌✨</div>
-      <h2>Your name is written in the stars</h2>
-      <p>Every little star was waiting to find its place...</p>
-      <canvas id="skyCanvas" aria-label="Stars forming the name Gouga"></canvas>
-      <h1 id="nameReveal" style="opacity:0;transition:opacity 2s">G O U G A 💗</h1>
-      <p>Future Bachelière 🎓</p>
-      <p>May your next chapter be full of light, ya Gouga.</p>
-      <button onclick="showCertificate()">Open your little certificate 🎓</button>
-    </div>`;
-  drawStars();
-}
-
-
-function drawStars() {
-  const w = canvas.width;
-  const h = canvas.height;
-
-  ctx.clearRect(0, 0, w, h);
-
-  // نجوم صغيرة في السماء
-  for (let i = 0; i < 180; i++) {
-    const x = Math.random() * w;
-    const y = Math.random() * h;
-    const r = Math.random() * 1.8 + 0.4;
-
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fillStyle = "#ffffff";
-    ctx.shadowBlur = 8;
-    ctx.shadowColor = "#ffb7ff";
-    ctx.fill();
-  }
-
-  // نكتب GOUGA بالنجوم
-  ctx.shadowBlur = 0;
-  ctx.font = `bold ${Math.min(w * 0.17, 100)}px Arial`;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillStyle = "#ffffff";
-  ctx.fillText("GOUGA", w / 2, h / 2);
-
-  // نحول الحروف إلى نقاط مضيئة
-  const pixels = ctx.getImageData(0, 0, w, h);
-  const points = [];
-
-  for (let y = 0; y < h; y += 3) {
-    for (let x = 0; x < w; x += 3) {
-      const index = (y * w + x) * 4;
-      if (pixels.data[index + 3] > 100) {
-        points.push({ x, y, r: Math.random() * 1.8 + 0.8 });
-      }
-    }
-  }
-
-  ctx.clearRect(0, 0, w, h);
-
-  // نرسم الاسم بكوكبة من النجوم
-  points.forEach((p, i) => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = i % 5 === 0 ? "#ffb7ff" : "#ffffff";
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = "#e879ff";
-    ctx.fill();
-  });
-
-  ctx.shadowBlur = 0;
-
-  // نجمة لامعة في كل حرف تقريباً
-  for (let i = 0; i < 5; i++) {
-    const x = w * (0.18 + i * 0.16);
-    const y = h / 2;
-    ctx.beginPath();
-    ctx.arc(x, y, 2.5, 0, Math.PI * 2);
-    ctx.fillStyle = "#ffe7a3";
-    ctx.shadowBlur = 18;
-    ctx.shadowColor = "#fff0a8";
-    ctx.fill();
-  }
-
-  ctx.shadowBlur = 0;
-}
-
-  let t=0;
-  function frame() {
-    ctx.clearRect(0,0,w,h);
-    for(let i=0;i<65;i++){
-      const x=(i*67+13)%w;
-      const y=(i*37+19)%h;
-      ctx.fillStyle="rgba(255,225,248,"+(0.25+0.55*Math.abs(Math.sin(t/25+i)))+")";
-      ctx.beginPath();ctx.arc(x,y,1.2,0,Math.PI*2);ctx.fill();
-    }
-    points.forEach((p,i)=>{
-      const sparkle=0.65+0.35*Math.sin(t/12+i);
-      ctx.fillStyle="rgba(255,190,235,"+sparkle+")";
-      ctx.shadowColor="#ff83d7";ctx.shadowBlur=12;
-      ctx.beginPath();ctx.arc(p.x,p.y,3,0,Math.PI*2);ctx.fill();
-    });
-    ctx.shadowBlur=0;
-    t++;
-    if(t<180) requestAnimationFrame(frame);
-    else $("nameReveal").style.opacity="1";
-  }
-  frame();
-}
-
-function showCertificate() {
-  screen.innerHTML = `
-    <div class="card">
-      <div class="hero">🎓🌸</div>
-      <h2>Certificate of Courage</h2>
-      <div class="letter" style="text-align:center">
-        <p>Presented with love to</p>
-        <h2>GOUGA</h2>
-        <p>For every effort, every brave new beginning, and every dream worth chasing.</p>
-        <h2>Future Bachelière</h2>
-        <p>May your hard work lead you to beautiful opportunities. ✨</p>
-        <p><i>With encouragement from Oussy ❤️</i></p>
-      </div>
-      <p>Adventure complete: ${score} stars collected ⭐</p>
-      <button onclick="showHome()">Replay the adventure 🔄</button>
-    </div>`;
-}
-
-updateHUD();
-showHome();
 </script>
 </body>
 </html>
