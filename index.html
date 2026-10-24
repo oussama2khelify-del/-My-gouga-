@@ -4,337 +4,610 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gouga's Secret World 💗</title>
+<meta name="theme-color" content="#170c32">
+<title>Gouga: Beyond the Stars 💗</title>
 
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;color:white;text-align:center;
- font-family:"Trebuchet MS",Arial,sans-serif;
- background:radial-gradient(circle at top,#763d9b,#26143f 65%,#130d2b);
- overflow-x:hidden
+:root {
+  --pink:#ffb8e7;
+  --purple:#a78bfa;
+  --glass:#21163edc;
 }
-#stars{position:fixed;inset:0;pointer-events:none;z-index:0;
- background-image:radial-gradient(#fff 1px,transparent 1px),
- radial-gradient(#ffb8e6 1px,transparent 1px);
- background-size:47px 47px,79px 79px;opacity:.45}
-main{position:relative;z-index:1;max-width:680px;width:93%;
- margin:22px auto;padding:22px 16px;border:1px solid #ffffff40;
- border-radius:27px;background:#21143de8;
- box-shadow:0 0 35px #f47bce30}
-h1{font-size:clamp(25px,7vw,39px);color:#ffd3ef;
- text-shadow:0 0 18px #ff75cf}
-h2{color:#ffcaec}
-p{line-height:1.7}
-.hero{font-size:65px;animation:float 3s infinite}
-@keyframes float{50%{transform:translateY(-10px)}}
-@keyframes glow{50%{box-shadow:0 0 25px #ff8cda}}
-button{
- cursor:pointer;border:0;border-radius:24px;padding:12px 17px;
- margin:6px;color:#54234d;background:linear-gradient(135deg,#ffe0f3,#ff9bd9);
- font-size:15px;font-weight:bold
+* { box-sizing:border-box; }
+body {
+  margin:0; min-height:100vh; overflow-x:hidden;
+  color:#fff; text-align:center;
+  font-family:"Trebuchet MS",Arial,sans-serif;
+  background:radial-gradient(ellipse at 50% 0%,#713b91,#271543 48%,#0b102a);
 }
-button:active{transform:scale(.97)}
-button:disabled{opacity:.5;cursor:default}
-.choice{display:block;width:100%;max-width:490px;margin:10px auto;
- background:#ffffff12;border:1px solid #eeb9ff;color:white;
- border-radius:15px;padding:14px;font-weight:normal}
-.card{padding:18px;margin:14px 0;background:#ffffff0c;
- border:1px solid #ffffff30;border-radius:20px}
-.small{font-size:13px;color:#e5cceF}
-.bar{height:9px;border-radius:20px;background:#ffffff25;overflow:hidden}
-#fill{height:100%;width:0;background:#ffb4e5;transition:.3s}
-.pill{display:inline-block;background:#ffffff17;border-radius:20px;
- padding:7px 11px;margin:4px;color:#ffe1f4;font-size:13px}
-.hidden{display:none!important}
-#feedback{min-height:25px;color:#ffd3ef}
-.hearts{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.heart{font-size:38px;background:#ffffff12;border:1px solid #ffffff25;
- border-radius:16px;padding:15px 5px}
-.heart.found{background:#ff85ce44}
-.boxes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.chest{font-size:43px;padding:15px 2px;background:#ffffff10;
- border:1px solid #ffc5ed;border-radius:15px}
-video{width:100%;max-height:380px;border-radius:17px;background:#10091d;
- margin:12px 0}
-.letter{background:#fff0f8;color:#56264f;text-align:left;
- padding:19px;border-radius:17px;line-height:1.9}
-.letter h2{text-align:center;color:#b52b80}
-.memorygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.memory{font-size:28px;min-height:65px;padding:10px 2px;
- background:#ffffff12;color:white;border:1px solid #eeb9ff;border-radius:12px}
-footer{font-size:12px;color:#e5cceF;margin-top:25px}
+#sky {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    radial-gradient(#fff 1px,transparent 1.5px),
+    radial-gradient(#fbb8ee 1px,transparent 1.5px),
+    radial-gradient(#b9c7ff 1px,transparent 1.5px);
+  background-size:43px 43px,71px 71px,107px 107px;
+  background-position:0 0,23px 19px,40px 62px;
+  opacity:.52; animation:skyMove 35s linear infinite;
+}
+@keyframes skyMove {
+  to { background-position:0 400px,23px 419px,40px 462px; }
+}
+#app {
+  position:relative; z-index:1;
+  width:min(94%,680px); margin:20px auto; padding:20px 15px 28px;
+  border:1px solid #ffffff35; border-radius:27px;
+  background:var(--glass); box-shadow:0 0 45px #d66dff22;
+  backdrop-filter:blur(9px);
+}
+h1 { color:#ffd8f1; font-size:clamp(27px,7vw,43px);
+  text-shadow:0 0 18px #fa80d5; margin:10px 0; }
+h2 { color:#ffd0ee; }
+p { line-height:1.75; }
+.hero { font-size:58px; animation:float 3s ease-in-out infinite; }
+@keyframes float { 50% { transform:translateY(-9px); } }
+button {
+  font:inherit; cursor:pointer; border:0; border-radius:24px;
+  padding:12px 17px; margin:6px 3px;
+  color:#4d214d; font-weight:bold;
+  background:linear-gradient(135deg,#ffe0f3,#ff9fda);
+  box-shadow:0 5px 16px #08061a55;
+  transition:transform .15s;
+}
+button:active { transform:scale(.96); }
+button:disabled { opacity:.45; cursor:default; }
+button:focus-visible { outline:3px solid white; }
+.choice {
+  display:block; width:100%; max-width:510px; margin:10px auto;
+  color:white; font-weight:normal;
+  background:#ffffff10; border:1px solid #e5b9ff;
+  border-radius:15px; padding:14px;
+}
+.choice:hover { background:#ffffff20; }
+.card {
+  margin:15px 0; padding:17px;
+  border-radius:20px; border:1px solid #ffffff28;
+  background:#ffffff0b;
+}
+.pill {
+  display:inline-block; border-radius:20px; padding:6px 11px;
+  margin:3px; background:#ffffff16; color:#ffe0f4; font-size:13px;
+}
+.muted { color:#ddcceF; font-size:13px; }
+.bar { height:8px; background:#ffffff20; border-radius:20px; overflow:hidden; }
+#progress { height:100%; width:0; background:linear-gradient(90deg,#ff9bdc,#fff0af); transition:width .5s; }
+#musicBtn { background:#ffffff17; color:white; border:1px solid #ffffff50; }
+video { width:100%; max-height:380px; border-radius:17px; background:#090718; margin:10px 0; }
+.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; }
+.tile {
+  min-width:0; min-height:76px; font-size:30px; padding:8px 2px;
+  color:white; background:#ffffff10; border:1px solid #ffffff40;
+  border-radius:15px;
+}
+.tile.done { background:#ffb1e833; border-color:#ffc6ed; }
+.memorygrid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; }
+.memory { font-size:25px; min-height:62px; padding:8px 1px; color:white;
+  background:#ffffff12; border:1px solid #dcb9ff; border-radius:12px; }
+.letter { background:#fff0f8; color:#55234e; text-align:left;
+  padding:18px; border-radius:17px; line-height:1.9; }
+.letter h2 { color:#b52e82; text-align:center; }
+.hidden { display:none !important; }
+#feedback { min-height:24px; color:#ffdbf2; }
+#glitch {
+  position:fixed; inset:0; z-index:10; display:none; overflow:auto;
+  padding:25vh 12px 30px; background:#080515; color:#ffb6e6;
+}
+#glitch.active { display:block; animation:glitch .18s steps(2) 8; }
+@keyframes glitch {
+  0% { transform:translateX(0); text-shadow:4px 0 red,-4px 0 cyan; }
+  50% { transform:translateX(3px); text-shadow:-4px 0 red,4px 0 cyan; }
+  100% { transform:translateX(-2px); }
+}
+#skyCanvas { width:100%; height:280px; display:block; }
+.fragment { opacity:.45; }
+.fragment.found { opacity:1; color:#ffb8e7; text-shadow:0 0 12px #ff8dd9; }
+footer { margin-top:24px; color:#d7c5ed; font-size:12px; }
 </style>
 </head>
 
 <body>
-<div id="stars"></div>
-<main>
- <div class="hero">🌙💗✨</div>
- <h1>Gouga's Secret World</h1>
- <p>A magical little adventure made just for you, ya Assoula 🌸</p>
+<div id="sky"></div>
 
- <button id="musicBtn" onclick="toggleMusic()">🎵 Play our song</button>
- <audio id="music" loop>
-  <source src="music.mp3" type="audio/mpeg">
- </audio>
+<main id="app">
+  <div class="hero">🌙✨💗</div>
+  <h1>Gouga: Beyond the Stars</h1>
+  <p>A secret universe, created just for you, ya Assoula. 🌸</p>
 
- <div class="bar"><div id="fill"></div></div>
- <p><span class="pill" id="levelLabel">Your adventure awaits</span>
- <span class="pill" id="starLabel">⭐ 0 stars</span></p>
+  <button id="musicBtn" onclick="toggleMusic()">🎵 Play our song</button>
+  <audio id="music" loop preload="none">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
 
- <section id="game">
-  <div class="card">
-   <h2>🔐 The Secret Portal</h2>
-   <p>
-    Ya Gouga, mar7be bik fi 3almek el s7our! ✨<br>
-    Fama 5 missions, hidden treasures w messages men Oussy.
-   </p>
-   <p>Every star brings you closer to your final surprise. 💌</p>
-   <p><b>Ready, future Bachelière? 🎓</b></p>
-   <button onclick="startGame()">ENTER MY WORLD 🚀</button>
-  </div>
- </section>
+  <div class="bar"><div id="progress"></div></div>
+  <p>
+    <span class="pill" id="stageLabel">The adventure begins</span>
+    <span class="pill" id="scoreLabel">⭐ 0 stars</span>
+  </p>
 
- <footer>Created with love by your Oussy ❤️</footer>
+  <section id="screen"></section>
+  <footer>Made with love by Oussy ❤️</footer>
 </main>
 
-<script>
-const game = document.getElementById("game");
-const music = document.getElementById("music");
-let stars = 0;
-let stage = 0;
-let foundHearts = 0;
-let matched = [];
-let opened = [];
-let lock = false;
+<div id="glitch" aria-live="polite">
+  <h1>⚠ SIGNAL FOUND ⚠</h1>
+  <p id="glitchText">Wait... this was never part of the game.</p>
+</div>
 
-function toggleMusic(){
- const btn=document.getElementById("musicBtn");
- if(music.paused){
-  music.play().then(()=>btn.textContent="⏸️ Pause music")
-   .catch(()=>alert("Upload music.mp3 to GitHub first 💗"));
- }else{
-  music.pause();btn.textContent="🎵 Play our song";
- }
+<script>
+const screen = document.getElementById("screen");
+const music = document.getElementById("music");
+const TOTAL = 5;
+let stage = 0;
+let score = 0;
+let fragments = [];
+let heartsFound = [];
+let memoryDeck = [];
+let memoryOpen = [];
+let memoryMatched = [];
+let memoryLock = false;
+let chestsOpened = [];
+let musicPlaying = false;
+let finalTimer = null;
+
+const $ = id => document.getElementById(id);
+
+function updateHUD() {
+  $("scoreLabel").textContent = "⭐ " + score + " stars";
+  $("stageLabel").textContent = stage ? "World " + stage + " / " + TOTAL : "The adventure begins";
+  $("progress").style.width = (stage / TOTAL * 100) + "%";
 }
-function update(){
- document.getElementById("starLabel").textContent="⭐ "+stars+" stars";
- document.getElementById("fill").style.width=(stage/5*100)+"%";
- document.getElementById("levelLabel").textContent=
-  stage===0?"Your adventure awaits":"Mission "+stage+" / 5";
+
+function awardStar() {
+  score++;
+  updateHUD();
 }
-function startGame(){
- stage=1;update();quiz();
-}
-function addStar(){
- stars++;update();
-}
-function quiz(){
- game.innerHTML=`
- <div class="card">
- <span class="pill">MISSION 1 🌸</span>
- <h2>The Power of Believing</h2>
- <p>Ya Gouga, ki el Bac ywalli s3ib, chnowa lezem tetdhakkri?</p>
- <button class="choice" onclick="quizAnswer(0)">"Ma najamch..." 😔</button>
- <button class="choice" onclick="quizAnswer(1)">"Neth9a fi rou7i, na3mel effort w netwakkel 3al Allah." 💪</button>
- <button class="choice" onclick="quizAnswer(0)">"Nkhalli kol chay lel lekher." 😅</button>
- <p id="feedback"></p>
- </div>`;
-}
-function quizAnswer(n){
- if(n!==1){
-  document.getElementById("feedback").textContent=
-   "Try again, princess! Th9i fi rou7ek, enti 9ad'ha. 🌷";
-  return;
- }
- addStar();
- game.innerHTML=`
- <div class="card">
- <div class="hero">🌟💗🌟</div><h2>Correct, my star!</h2>
- <p>Enti 9weya w tnajmi twassel l ahdef mte3ek. Inchallah Rabi ywaf9ek! 🤲</p>
- <button onclick="showVideo(1,2)">Collect your first treasure 🎁</button>
- </div>`;
-}
-function showVideo(n,next){
- const file="video"+n+".mp4";
- game.innerHTML=`
- <div class="card"><h2>${n===1?"💌 A message for you":n===2?"🌷 A little memory":"❤️ One last message"}</h2>
- <video controls playsinline preload="metadata">
-  <source src="${file}" type="video/mp4">
- </video>
- <p class="small">Ken el video ma yodhhorch, thabet esm el fichier fel GitHub.</p>
- <p>Take this little moment just for you, ya Gouga. 💗</p>
- <button onclick="goStage(${next})">Continue adventure ➜</button>
- </div>`;
-}
-function goStage(n){
- stage=n;update();
- if(n===2)hiddenHearts();
- if(n===3)emojiPuzzle();
- if(n===4)memoryGame();
- if(n===5)treasureBoxes();
-}
-function hiddenHearts(){
- foundHearts=0;
- let symbols=["💗","🌸","💜","⭐","💖","🌙","💗","✨","💕"];
- let html=`<div class="card"><span class="pill">MISSION 2 🔎</span>
- <h2>Find 5 hidden hearts</h2>
- <p>Famma 5 hearts mkhabbyin fi hadha el magical garden. Tal9ahom lkol! 🌷</p>
- <p id="heartCount">💗 0 / 5 found</p><div class="hearts">`;
- symbols.forEach((s,i)=>{
-  html+=`<button class="heart" id="h${i}" onclick="findHeart(${i})">${s==="💗"||s==="💖"||s==="💕"?"❔":"🌿"}</button>`;
- });
- html+=`</div><p id="feedback"></p><button id="heartNext" class="hidden" onclick="showVideo(2,3)">Open your memory 🎬</button></div>`;
- game.innerHTML=html;
-}
-function findHeart(i){
- const el=document.getElementById("h"+i);
- if(el.disabled)return;
- const values=["💗","🌸","💜","⭐","💖","🌙","💗","✨","💕"];
- el.disabled=true;
- if(["💗","💖","💕"].includes(values[i])){
-  el.textContent=values[i];el.classList.add("found");
-  foundHearts++;
-  document.getElementById("heartCount").textContent="💗 "+foundHearts+" / 5 found";
-  if(foundHearts>=5){
-   // Three special hearts can appear more than once; the garden
-   // awards the mission when all nine leaves have been explored.
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play().then(() => {
+      musicPlaying = true;
+      $("musicBtn").textContent = "⏸ Pause music";
+    }).catch(() => {
+      alert("Ajoute music.mp3 à ton dépôt GitHub, puis réessaie. 🎵");
+    });
+  } else {
+    music.pause();
+    musicPlaying = false;
+    $("musicBtn").textContent = "🎵 Play our song";
   }
- }else{
-  el.textContent=values[i];
- }
- if([...document.querySelectorAll(".heart")].every(b=>b.disabled)){
-  addStar();
-  document.getElementById("feedback").textContent=
-   "Secret garden explored! El beauté fi détails sghar. 🌸";
-  document.getElementById("heartNext").classList.remove("hidden");
- }
 }
-function emojiPuzzle(){
- game.innerHTML=`
- <div class="card"><span class="pill">MISSION 3 🧩</span>
- <h2>Decode the Secret</h2>
- <p>💖 + 🎓 + 🌸 = ?</p>
- <p>Which word matches the secret message?</p>
- <button class="choice" onclick="emojiAnswer(false)">Summer ☀️</button>
- <button class="choice" onclick="emojiAnswer(true)">Gouga's success 💗</button>
- <button class="choice" onclick="emojiAnswer(false)">A pizza party 🍕</button>
- <p id="feedback"></p></div>`;
+
+function showHome() {
+  stage = 0;
+  updateHUD();
+  screen.innerHTML = `
+    <div class="card">
+      <div class="hero">🌌</div>
+      <h2>A message from another universe...</h2>
+      <p>
+        "One day, a star disappeared from the sky.
+        To bring it back, someone special must discover
+        five magical worlds."
+      </p>
+      <p>Ya Gouga, are you ready to find your stars? 💗</p>
+      <button onclick="startAdventure()">START THE ADVENTURE 🚀</button>
+      <p class="muted">Tip: turn on the music for the full experience.</p>
+    </div>`;
 }
-function emojiAnswer(ok){
- if(!ok){
-  document.getElementById("feedback").textContent="Think of your dreams and your Bac, ya princess! 🌸";
-  return;
- }
- addStar();
- game.innerHTML=`
- <div class="card"><div class="hero">🔓✨</div>
- <h2>The secret is unlocked!</h2>
- <p>Najahik far7a ntemennaha lik men 9albi. You deserve to be proud of yourself. 🎓</p>
- <button onclick="showVideo(2,4)">Next magical memory ➜</button></div>`;
+
+function startAdventure() {
+  stage = 1;
+  updateHUD();
+  worldOne();
 }
-function memoryGame(){
- const icons=["🌸","💗","🌙","⭐","🌸","💗","🌙","⭐"];
- // Shuffle the cards for a new arrangement each play.
- icons.sort(()=>Math.random()-.5);
- matched=[];opened=[];lock=false;
- let html=`<div class="card"><span class="pill">MISSION 4 🃏</span>
- <h2>Memory Magic</h2>
- <p>Tal9a les 4 paires. E9leb zouz cartes kol marra. ✨</p>
- <div class="memorygrid">`;
- icons.forEach((v,i)=>{
-  html+=`<button class="memory" id="m${i}" onclick="flip(${i},'${v}')">❔</button>`;
- });
- html+=`</div><p id="memoryCount">Pairs: 0 / 4</p><p id="feedback"></p>
- <button id="memoryNext" class="hidden" onclick="showVideo(3,5)">Open the final treasure 🎁</button></div>`;
- game.innerHTML=html;
+
+/* WORLD 1: choose the right path */
+function worldOne() {
+  screen.innerHTML = `
+    <div class="card">
+      <span class="pill">WORLD 1 · THE FIRST LIGHT</span>
+      <h2>🌸 Choose your path</h2>
+      <p>A magical door asks you one question...</p>
+      <p>When the Bac feels difficult, what should you remember?</p>
+      <button class="choice" onclick="answerOne(false)">"I'm not capable." 😔</button>
+      <button class="choice" onclick="answerOne(true)">"I can try, learn and keep going." 💪</button>
+      <button class="choice" onclick="answerOne(false)">"I'll give up before I start." 🌧️</button>
+      <p id="feedback"></p>
+    </div>`;
 }
-function flip(i,v){
- if(lock||matched.includes(i)||opened.some(c=>c.i===i))return;
- document.getElementById("m"+i).textContent=v;
- opened.push({i,v});
- if(opened.length===2){
-  lock=true;
-  if(opened[0].v===opened[1].v){
-   matched.push(opened[0].i,opened[1].i);
-   opened.forEach(c=>document.getElementById("m"+c.i).disabled=true);
-   opened=[];lock=false;
-   document.getElementById("memoryCount").textContent="Pairs: "+(matched.length/2)+" / 4";
-   if(matched.length===8){
-    addStar();
-    document.getElementById("feedback").textContent="Perfect memory, ya Gouga! 🌟";
-    document.getElementById("memoryNext").classList.remove("hidden");
-   }
-  }else{
-   setTimeout(()=>{
-    opened.forEach(c=>document.getElementById("m"+c.i).textContent="❔");
-    opened=[];lock=false;
-   },750);
+
+function answerOne(correct) {
+  if (!correct) {
+    $("feedback").textContent =
+      "Try again, princess! Enti tnajmi ta3mel barcha ki ta3ti rou7ek forsa. 🌷";
+    return;
   }
- }
+  awardStar();
+  screen.innerHTML = `
+    <div class="card">
+      <div class="hero">🌟</div>
+      <h2>The first star is yours!</h2>
+      <p>Inchallah Rabi ywaf9ek fi el Bac. Step by step, ya battala. 🤲</p>
+      <button onclick="worldTwo()">Enter the Secret Garden ➜</button>
+    </div>`;
 }
-function treasureBoxes(){
- game.innerHTML=`
- <div class="card"><span class="pill">MISSION 5 🎁</span>
- <h2>The Mystery Treasure</h2>
- <p>Ikhtar coffre wa7ed... kol wa7ed fih surprise sghira. 💌</p>
- <div class="boxes">
- <button class="chest" onclick="openChest(0)">🎁</button>
- <button class="chest" onclick="openChest(1)">🎀</button>
- <button class="chest" onclick="openChest(2)">💝</button>
- </div>
- <p id="feedback">Pick a treasure to reveal it!</p>
- <button id="finalBtn" class="hidden" onclick="finale()">Unlock the final star 🌌</button>
- </div>`;
+
+/* WORLD 2: hidden hearts */
+function worldTwo() {
+  stage = 2;
+  updateHUD();
+  heartsFound = [];
+  const garden = ["🌿","💗","🌙","🌸","⭐","💖","🍃","✨","💕"];
+  screen.innerHTML = `
+    <div class="card">
+      <span class="pill">WORLD 2 · SECRET GARDEN</span>
+      <h2>🔎 Find the hidden hearts</h2>
+      <p>5 hearts are hiding in the garden. Tap each leaf to explore it.</p>
+      <div class="grid" id="garden"></div>
+      <p id="heartCount">💗 0 / 5 hearts</p>
+      <p id="feedback"></p>
+      <button id="gardenNext" class="hidden" onclick="worldThree()">Follow the stars ➜</button>
+    </div>`;
+  garden.forEach((symbol, i) => {
+    const b = document.createElement("button");
+    b.className = "tile";
+    b.textContent = "❔";
+    b.setAttribute("aria-label", "Explore garden tile " + (i+1));
+    b.onclick = () => {
+      if (b.disabled) return;
+      b.disabled = true;
+      b.classList.add("done");
+      b.textContent = symbol;
+      if (["💗","💖","💕","🌸","✨"].includes(symbol)) {
+        heartsFound.push(i);
+        $("heartCount").textContent = "💗 " + heartsFound.length + " / 5 discoveries";
+      }
+      if (document.querySelectorAll("#garden button:not(:disabled)").length === 0) {
+        awardStar();
+        $("feedback").textContent = "You explored every corner. The garden remembers your kindness. 🌷";
+        $("gardenNext").classList.remove("hidden");
+      }
+    };
+    $("garden").appendChild(b);
+  });
 }
-let chests=[];
-function openChest(n){
- if(chests.includes(n))return;
- chests.push(n);
- const texts=[
-  "💗 You deserve kindness, peace and so many beautiful days.",
-  "🎓 Inchallah twassel lkol 7olm fi 9albek, step by step.",
-  "🌷 Never forget that your smile can make a day brighter."
- ];
- document.getElementById("feedback").textContent=texts[n];
- if(chests.length===1)addStar();
- if(chests.length>=3){
-  document.getElementById("finalBtn").classList.remove("hidden");
- }
+
+/* WORLD 3: decode the message */
+function worldThree() {
+  stage = 3;
+  updateHUD();
+  screen.innerHTML = `
+    <div class="card">
+      <span class="pill">WORLD 3 · THE STAR CODE</span>
+      <h2>🧩 Decode the magic</h2>
+      <p>💗 + 📚 + 🎓 = ?</p>
+      <p>Which message is hidden in these symbols?</p>
+      <button class="choice" onclick="decode(false)">A homework emergency 😭</button>
+      <button class="choice" onclick="decode(true)">Love, learning and a bright future ✨</button>
+      <button class="choice" onclick="decode(false)">A sleepy dragon 🐉</button>
+      <p id="feedback"></p>
+    </div>`;
 }
-function finale(){
- stage=5;addStar();update();
- game.innerHTML=`
- <div class="card">
- <div class="hero">👑💖🌌</div>
- <h2>You unlocked the Secret Ending!</h2>
- <p>Gouga, you collected ${stars} stars. ⭐</p>
- <div class="pill">🎓 Future Bachelière</div>
- <div class="letter">
- <h2>To my dear Gouga 💌</h2>
- <p>Ya Assoula, ya Gouga ❤️</p>
- <p>Bhy, n7eb n9ollek haja men 9albi:
- ena n2amen bik barcha, w na3ref elli enti tnajmi
- twassel lkol chay elli tetmannah.</p>
- <p>El Bac mar7la mohema, ama ma y7addedch
- 9imtek. A3mel effort, rta7 ki testa7a9, w dima
- th9i fi rou7ek. Inchallah Rabi ywaf9ek w yfar7ek
- b najahik. 🤲✨</p>
- <p>W مهما تبدلت الأيام، enti personne spéciale.
- Ntemennalek el khir men 9albi.
- Keep smiling, princess. 🌸</p>
- <p>One step at a time, ya battala! You can do it. 💪</p>
- <p style="text-align:right">With love,<br><b>Ton Oussy ❤️</b></p>
- </div>
- <h2>🎬 My last message</h2>
- <video controls playsinline preload="metadata">
- <source src="video3.mp4" type="video/mp4"></video>
- <p>Made just for you, Gouga. ❤️</p>
- <button onclick="location.reload()">Replay our adventure 🔄</button>
- </div>`;
+
+function decode(correct) {
+  if (!correct) {
+    $("feedback").textContent = "Think of your dreams, your effort, and the future you deserve. 🌟";
+    return;
+  }
+  awardStar();
+  screen.innerHTML = `
+    <div class="card">
+      <div class="hero">🔓✨</div>
+      <h2>Secret code unlocked!</h2>
+      <p>El Bac étape fi tri9ek, mouch kol 7yetek. A3ti rou7ek wa9tha w far7a b kol progrès. 💗</p>
+      <p class="muted">A mysterious message has been added to your collection.</p>
+      <button onclick="worldFour()">Enter the Memory Room ➜</button>
+    </div>`;
 }
-update();
+
+/* WORLD 4: memory cards */
+function worldFour() {
+  stage = 4;
+  updateHUD();
+  const symbols = ["🌙","💗","⭐","🌸","🌙","💗","⭐","🌸"];
+  memoryDeck = symbols.slice().sort(() => Math.random() - 0.5);
+  memoryOpen = [];
+  memoryMatched = [];
+  memoryLock = false;
+
+  screen.innerHTML = `
+    <div class="card">
+      <span class="pill">WORLD 4 · MEMORY ROOM</span>
+      <h2>🃏 Match the stars</h2>
+      <p>Flip two cards at a time and find all four pairs.</p>
+      <div class="memorygrid" id="memoryGrid"></div>
+      <p id="pairCount">Pairs found: 0 / 4</p>
+      <p id="feedback"></p>
+      <button id="memoryNext" class="hidden" onclick="worldFive()">Open the final portal ➜</button>
+    </div>`;
+
+  memoryDeck.forEach((symbol, i) => {
+    const b = document.createElement("button");
+    b.className = "memory";
+    b.textContent = "❔";
+    b.setAttribute("aria-label", "Memory card " + (i+1));
+    b.onclick = () => flipMemory(i, b);
+    $("memoryGrid").appendChild(b);
+  });
+}
+
+function flipMemory(i, button) {
+  if (memoryLock || memoryMatched.includes(i) || memoryOpen.some(x => x.i === i)) return;
+  button.textContent = memoryDeck[i];
+  memoryOpen.push({i, button});
+  if (memoryOpen.length !== 2) return;
+
+  memoryLock = true;
+  const [a, b] = memoryOpen;
+
+  if (memoryDeck[a.i] === memoryDeck[b.i]) {
+    memoryMatched.push(a.i, b.i);
+    a.button.disabled = true;
+    b.button.disabled = true;
+    a.button.classList.add("done");
+    b.button.classList.add("done");
+    memoryOpen = [];
+    memoryLock = false;
+    $("pairCount").textContent = "Pairs found: " + (memoryMatched.length/2) + " / 4";
+
+    if (memoryMatched.length === 8) {
+      awardStar();
+      $("feedback").textContent = "Perfect! Your memory unlocked another star. ✨";
+      $("memoryNext").classList.remove("hidden");
+    }
+  } else {
+    setTimeout(() => {
+      a.button.textContent = "❔";
+      b.button.textContent = "❔";
+      memoryOpen = [];
+      memoryLock = false;
+    }, 750);
+  }
+}
+
+/* WORLD 5: three treasures */
+function worldFive() {
+  stage = 5;
+  updateHUD();
+  chestsOpened = [];
+  screen.innerHTML = `
+    <div class="card">
+      <span class="pill">WORLD 5 · THE LAST TREASURE</span>
+      <h2>🎁 Choose your mystery boxes</h2>
+      <p>Each box hides a little gift. Open all three to unlock the secret ending.</p>
+      <div class="grid">
+        <button class="tile" onclick="openChest(0,this)">🎁</button>
+        <button class="tile" onclick="openChest(1,this)">🎀</button>
+        <button class="tile" onclick="openChest(2,this)">💝</button>
+      </div>
+      <p id="feedback">Choose a treasure, ya Gouga. 💗</p>
+      <button id="endingBtn" class="hidden" onclick="startGlitch()">Unlock the final secret 🌌</button>
+    </div>`;
+}
+
+function openChest(n, button) {
+  if (chestsOpened.includes(n)) return;
+  chestsOpened.push(n);
+  button.disabled = true;
+  button.textContent = "✨";
+
+  const gifts = [
+    "🌷 Gift 1: You deserve gentle days and people who cheer for you.",
+    "🎓 Gift 2: Inchallah Rabi yfar7ek b najahik. Keep believing in yourself.",
+    "💌 Gift 3: Someone took time to make this little universe just for you."
+  ];
+  $("feedback").textContent = gifts[n];
+
+  if (chestsOpened.length === 1) awardStar();
+  if (chestsOpened.length === 3) {
+    $("endingBtn").classList.remove("hidden");
+    $("feedback").textContent += " All treasures found! The universe is changing...";
+  }
+}
+
+/* Plot twist: a fake game glitch, followed by the personal video */
+function startGlitch() {
+  const layer = $("glitch");
+  layer.classList.add("active");
+  $("glitchText").textContent = "Wait... this mission was never part of the game.";
+  setTimeout(() => {
+    $("glitchText").textContent = "SIGNAL DETECTED: OUSSY 💗";
+  }, 1100);
+  setTimeout(() => {
+    layer.classList.remove("active");
+    showFinalVideo();
+  }, 2700);
+}
+
+function showFinalVideo() {
+  screen.innerHTML = `
+    <div class="card">
+      <div class="hero">💗📡🌌</div>
+      <h2>A message from Oussy...</h2>
+      <p>"Gouga, the last star is not in the sky. It's in this message."</p>
+      <video controls playsinline preload="metadata">
+        <source src="video3.mp4" type="video/mp4">
+        Your browser cannot play this video.
+      </video>
+      <p class="muted">If the video doesn't appear, check that video3.mp4 is uploaded to GitHub.</p>
+      <button onclick="revealLetter()">Discover the final letter 💌</button>
+    </div>`;
+}
+
+/* Seven fragments collected into the final letter */
+function revealLetter() {
+  fragments = [];
+  screen.innerHTML = `
+    <div class="card">
+      <div class="hero">📜✨</div>
+      <h2>The Library of Unsent Letters</h2>
+      <p>Tap the seven stars to reveal the words hidden inside them.</p>
+      <div id="fragmentArea" style="font-size:24px;line-height:2.3"></div>
+      <p id="fragmentMessage"></p>
+      <button id="letterBtn" class="hidden" onclick="showLetter()">Read your letter ❤️</button>
+    </div>`;
+
+  const words = ["YA","GOUGA,","TH9I","FI","ROU7EK","DIMA,","PRINCESS"];
+  words.forEach((word, i) => {
+    const b = document.createElement("button");
+    b.className = "fragment";
+    b.textContent = "✦";
+    b.setAttribute("aria-label", "Reveal secret word " + (i+1));
+    b.onclick = () => {
+      if (fragments.includes(i)) return;
+      fragments.push(i);
+      b.textContent = word;
+      b.classList.add("found");
+      if (fragments.length === words.length) {
+        $("fragmentMessage").textContent = "All seven fragments found. A letter is waiting for you. 💗";
+        $("letterBtn").classList.remove("hidden");
+        awardStar();
+      }
+    };
+    $("fragmentArea").appendChild(b);
+  });
+}
+
+function showLetter() {
+  screen.innerHTML = `
+    <div class="letter">
+      <h2>For my dear Gouga 💌</h2>
+      <p>Ya Assoula, ya Gouga ❤️</p>
+      <p>
+        Bhy, n7eb n9ollek haja men 9albi:
+        ena n2amen bik barcha. El Bac mar7la mohema,
+        ama ma y7addedch 9imtek. Enti akther men note,
+        akther men résultat, w akther men nhar s3ib.
+      </p>
+      <p>
+        A3mel effort, rta7 ki testa7a9, w dima th9i
+        fi rou7ek. Inchallah Rabi ywaf9ek, ysahel 3lik
+        w yfar7ek b najahik. 🤲🎓
+      </p>
+      <p>
+        W مهما تبدلت الأيام، ntemennalek el khir men
+        9albi. Nheb nchoufek dima tetbassem, ta7lem
+        w tet9addem. You deserve beautiful things,
+        ya princess. 🌸
+      </p>
+      <p>
+        Ken nhar t3ebti, etdhakkri elli el courage
+        mouch ma3neha ma t5afech; courage howa tkammel
+        7atta ki tkoun 5ayfa.
+      </p>
+      <p>
+        This little universe is a small reminder that
+        someone is cheering for you. One step at a time.
+        You can do it. 💗
+      </p>
+      <p style="text-align:right">
+        With love and all my best wishes,<br>
+        <b>Ton Oussy ❤️</b>
+      </p>
+      <button onclick="showConstellation()">One last surprise 🌠</button>
+    </div>`;
+}
+
+/* Stars turn into GOUGA */
+function showConstellation() {
+  screen.innerHTML = `
+    <div class="card">
+      <div class="hero">🌌✨</div>
+      <h2>Your name is written in the stars</h2>
+      <p>Every little star was waiting to find its place...</p>
+      <canvas id="skyCanvas" aria-label="Stars forming the name Gouga"></canvas>
+      <h1 id="nameReveal" style="opacity:0;transition:opacity 2s">G O U G A 💗</h1>
+      <p>Future Bachelière 🎓</p>
+      <p>May your next chapter be full of light, ya Gouga.</p>
+      <button onclick="showCertificate()">Open your little certificate 🎓</button>
+    </div>`;
+  drawStars();
+}
+
+function drawStars() {
+  const canvas = $("skyCanvas");
+  const ctx = canvas.getContext("2d");
+  const w = canvas.clientWidth || 320;
+  const h = 280;
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  ctx.scale(dpr,dpr);
+  ctx.clearRect(0,0,w,h);
+
+  const points = [];
+  const letters = [
+    [[0,1],[0,0],[1,0],[1,1],[0,1]],
+    [[0,0],[0,1],[1,1],[1,0],[0,0]],
+    [[0,0],[0,1],[1,1],[1,0],[0,0]],
+    [[0,0],[0,1],[1,1],[1,0],[0,0]],
+    [[0,0],[0,1],[1,1],[1,0],[0,0]]
+  ];
+  const letterWidth = Math.min(42,(w-25)/6);
+  const totalWidth = letterWidth*5*1.1;
+  const startX = (w-totalWidth)/2;
+  const startY = 85;
+
+  letters.forEach((lines,li)=>{
+    lines.forEach(([x,y])=>{
+      points.push({x:startX+li*letterWidth*1.1+x*letterWidth,
+                   y:startY+y*90});
+    });
+  });
+
+  let t=0;
+  function frame() {
+    ctx.clearRect(0,0,w,h);
+    for(let i=0;i<65;i++){
+      const x=(i*67+13)%w;
+      const y=(i*37+19)%h;
+      ctx.fillStyle="rgba(255,225,248,"+(0.25+0.55*Math.abs(Math.sin(t/25+i)))+")";
+      ctx.beginPath();ctx.arc(x,y,1.2,0,Math.PI*2);ctx.fill();
+    }
+    points.forEach((p,i)=>{
+      const sparkle=0.65+0.35*Math.sin(t/12+i);
+      ctx.fillStyle="rgba(255,190,235,"+sparkle+")";
+      ctx.shadowColor="#ff83d7";ctx.shadowBlur=12;
+      ctx.beginPath();ctx.arc(p.x,p.y,3,0,Math.PI*2);ctx.fill();
+    });
+    ctx.shadowBlur=0;
+    t++;
+    if(t<180) requestAnimationFrame(frame);
+    else $("nameReveal").style.opacity="1";
+  }
+  frame();
+}
+
+function showCertificate() {
+  screen.innerHTML = `
+    <div class="card">
+      <div class="hero">🎓🌸</div>
+      <h2>Certificate of Courage</h2>
+      <div class="letter" style="text-align:center">
+        <p>Presented with love to</p>
+        <h2>GOUGA</h2>
+        <p>For every effort, every brave new beginning, and every dream worth chasing.</p>
+        <h2>Future Bachelière</h2>
+        <p>May your hard work lead you to beautiful opportunities. ✨</p>
+        <p><i>With encouragement from Oussy ❤️</i></p>
+      </div>
+      <p>Adventure complete: ${score} stars collected ⭐</p>
+      <button onclick="showHome()">Replay the adventure 🔄</button>
+    </div>`;
+}
+
+updateHUD();
+showHome();
 </script>
 </body>
 </html>
