@@ -390,7 +390,7 @@ footer { text-align: center; padding: 20px; color: #bba9df; font-size: 12px; }
   </p>
 
   <button class="openBtn" onclick="enterUniverse()">
-    l7asilouta , nabdou... 💌
+  l7asilouta , nabdou... 💌
   </button>
   <p style="font-size:12px;color:#c4b5fd;margin-top:25px">
     surprise sa8rouna mn ossoss ❤️
@@ -873,22 +873,27 @@ function toggleMusic() {
 
 function enterUniverse() {
   const opening = document.getElementById("opening");
-  if (!opening) return;
 
-  opening.classList.add("hide");
+  if (opening) {
+    opening.classList.add("hide");
 
-  setTimeout(() => {
-    opening.style.display = "none";
-  }, 1300);
+    setTimeout(() => {
+      opening.style.display = "none";
+    }, 1300);
+  }
 
   const music = document.getElementById("music");
+
   if (music) {
     music.play().then(() => {
       musicPlaying = true;
-      const btn = document.getElementById("musicBtn");
-      if (btn) btn.textContent = "⏸ Pause our music";
+
+      const musicBtn = document.getElementById("musicBtn");
+      if (musicBtn) {
+        musicBtn.textContent = "⏸ Pause our music";
+      }
     }).catch(() => {
-      // تنجم تشغّل الموسيقى من الزرّ الموجود في الصفحة
+      // El site yekhdem hata ken el musique ma bdet-ch
     });
   }
 }
