@@ -851,15 +851,18 @@ function animateName() {
   draw();
 }
 
+
 function toggleMusic() {
   const music = $("music");
+  if (!music) return;
+
   if (!musicPlaying) {
     music.play().then(() => {
       musicPlaying = true;
       $("musicBtn").textContent = "⏸ Pause our music";
     }).catch(() => {
       $("musicBtn").textContent = "Tap to play 🎵";
-      alert("Upload a file named music.mp3 beside index.html, then tap Play again.");
+      alert("Check that music.mp3 is uploaded beside index.html.");
     });
   } else {
     music.pause();
@@ -867,7 +870,6 @@ function toggleMusic() {
     $("musicBtn").textContent = "🎵 Play our music";
   }
 }
-  
 
 function enterUniverse() {
   const opening = document.getElementById("opening");
