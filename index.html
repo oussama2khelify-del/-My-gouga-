@@ -868,18 +868,29 @@ function toggleMusic() {
   }
 }
   
+
 function enterUniverse() {
   const opening = document.getElementById("opening");
+  if (!opening) return;
+
   opening.classList.add("hide");
 
+  setTimeout(() => {
+    opening.style.display = "none";
+  }, 1300);
+
   const music = document.getElementById("music");
-  music.play().then(() => {
-    musicPlaying = true;
-    document.getElementById("musicBtn").textContent =
-      "⏸ Pause our music";
-  }).catch(() => {
-    // تنجم تبدأ الموسيقى بزر Play داخل اللعبة
-  });
+  if (music) {
+    music.play().then(() => {
+      musicPlaying = true;
+      const btn = document.getElementById("musicBtn");
+      if (btn) btn.textContent = "⏸ Pause our music";
+    }).catch(() => {
+      // تنجم تشغّل الموسيقى من الزرّ الموجود في الصفحة
+    });
+  }
+}
+
 
   setTimeout(() => {
     opening.style.display = "none";
