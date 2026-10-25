@@ -458,11 +458,11 @@ const rewards = [
   "ossoss yestana fik , enty najma lt4awi layly 🎁",
   "n7ebkkkk 💌",
   "twa7chtekkk💖",
-  "Your memory is powerful. Trust yourself! 🧩",
-  "You solved the star pattern. You're doing great! 🌟",
-  "You chose your own surprise. That's your magic. 🎀",
-  "A secret signal from Oussy has reached you. 📡",
-  "You made it to the end. Now look up at the stars, Gouga. 🌌"
+  "9esstek ma7leha , w niheya mta3ha bech tkoun far7a kbira 🧩",
+  "mchllh 3lik , hak kes7a hhhhh 🌟",
+  "kol d9i9a m3k teswa denya w mafiha. 🎀",
+  "radarat ta3y chadetk , ossoss bech ya5tfek a5er l3em 📡",
+  "benty w nejma lt4awily 7yety 🌌"
 ];
 
 function updateProgress() {
@@ -501,7 +501,7 @@ function completeMission(message = "Mission complete! ⭐") {
   $("rewardPanel").classList.remove("hidden");
   $("rewardText").textContent = rewards[old] || "A star for you! ⭐";
   const btn = document.createElement("button");
-  btn.textContent = current >= 12 ? "See the final surprise 🌌" : "Next mission ➜";
+  btn.textContent = current >= 12 ? "yalla nchoufou surprise le5ra 🌌" : "Next mission ➜";
   btn.style.marginTop = "12px";
   btn.onclick = renderMission;
   game.appendChild(btn);
@@ -529,18 +529,18 @@ function renderMission() {
 
 // MISSION 1 — BAC BOOST
 function mission1() {
-  setGame("The BAC Star 🎓",
-    "Gouga, when a difficult question appears, what should you do?",
+  setGame("qcm : nchoufek kfech t5ammy🙄😂 ",
+    "Gouga, hal ta9balina zawaja bi ossoss🥹 ?",
     `<div class="options">
-      <button onclick="answer1(false)">A. Give up immediately 😔</button>
-      <button onclick="answer1(true)">B. Breathe, think, and try step by step 💪</button>
-      <button onclick="answer1(false)">C. Decide that I can't do it 🙈</button>
+      <button onclick="answer1(false)">A. leee🙄 </button>
+      <button onclick="answer1(true)">B. bien surr , heka 7ob 7yety 😂😂❤️ w nji n3ajej darkom </button>
+      <button onclick="answer1(false)">C. h2hh 😂</button>
     </div>`);
 }
 function answer1(correct) {
   if (correct) {
-    completeMission("Correct! One exercise at a time, one step at a time. You can do it, Gouga! ❤️");
-  } else feedback("Try again, future bachelière! Believe in yourself 🌷");
+    completeMission("Correct! he4eka l i5tiyar sa7i7 elli imp tendmi 3lih  ❤️");
+  } else feedback("lee mela ? hhhh , 3awdi 3awdi w rakzi bl bhy ye 5raa🌷");
 }
 
 // MISSION 2 — FIND THE STARS
@@ -548,7 +548,7 @@ function mission2() {
   openedTiles = new Set();
   const symbols = ["🌙","🌸","⭐","🦋","💎","✨","🌷","💗","☁️"];
   setGame("The Hidden Garden 🌷",
-    "Tap all 9 garden tiles. Find the special stars hidden inside!",
+    "o9rsi 3lihom lkol . just bech n4aya3lek wa9tek ethamin 😂",
     `<div class="tiles">${symbols.map((s,i) =>
       `<button class="tile" id="tile${i}" onclick="openTile(${i},'${s}')">❔</button>`
     ).join("")}</div>
@@ -561,24 +561,24 @@ function openTile(i, symbol) {
   tile.textContent = symbol;
   tile.disabled = true;
   $("tileCount").textContent = `Tiles discovered: ${openedTiles.size} / 9`;
-  if (["⭐","✨","💗","💎"].includes(symbol)) feedback("You found a little piece of magic! ✨");
-  if (openedTiles.size === 9) completeMission("The whole garden is glowing because you found every secret! 🌸");
+  if (["⭐","✨","💗","💎"].includes(symbol)) feedback("yl3abbb haw mchllh 3lik  ✨");
+  if (openedTiles.size === 9) completeMission("katkoutty lmezyena 🌸");
 }
 
 // MISSION 3 — EMOJI CODE
 function mission3() {
-  setGame("Decode the Secret 💌",
-    "What does this little code mean?",
+  setGame("iktachfi serrr l mssg he4a trah 💌",
+    "lcode he4a ach ya3ni?",
     `<div class="center" style="font-size:38px">🌟 + 😊 + 💗</div>
     <div class="options">
-      <button onclick="answer3(false)">A. A rainy Monday ☔</button>
-      <button onclick="answer3(true)">B. A special person who brings happiness ✨</button>
-      <button onclick="answer3(false)">C. A maths formula 📐</button>
+      <button onclick="answer3(false)">A. jak yetbessem </button>
+      <button onclick="answer3(true)">B. nour 3inaya w basmet 7yety w 9alby gouga ✨</button>
+      <button onclick="answer3(false)">C. jak yetbessem marra o5ra 😂</button>
     </div>`);
 }
 function answer3(ok) {
-  if (ok) completeMission("Exactly! Some people make ordinary days feel magical. 💗");
-  else feedback("Look at the stars, smile, and heart again 😊");
+  if (ok) completeMission("Exactly! akid moch jak yetbessem , heki sa8rounty gouga lmezyena da5let l7yety w badletha🥹💗");
+  else feedback("taw berrasmy ta7ky 🤦🏻‍♂️");
 }
 
 // MISSION 4 — MEMORY MATCH
@@ -589,8 +589,8 @@ function mission4() {
   matched = [];
   firstCard = null;
   lockCards = false;
-  setGame("Memory of Stars 🧩",
-    "Find all 4 matching pairs. Tap two cards at a time.",
+  setGame("lo3bet l i5tilefet  🧩",
+    "yalla hay he4y lo3ba jamila , moch kima lmastin mn lawl 🙄🤦🏻‍♂️",
     `<div class="cards">${shuffled.map((s,i)=>
       `<button class="card" id="card${i}" data-symbol="${s}" onclick="flipCard(${i})">❔</button>`
     ).join("")}</div>
@@ -609,7 +609,7 @@ function flipCard(i) {
     matched.push(first, i);
     firstCard = null;
     $("pairCount").textContent = `Pairs found: ${matched.length / 2} / 4`;
-    if (matched.length === 8) completeMission("Perfect memory! All the pairs found. ⭐");
+    if (matched.length === 8). ⭐");
   } else {
     lockCards = true;
     setTimeout(() => {
@@ -623,8 +623,8 @@ function flipCard(i) {
 
 // MISSION 5 — TREASURE CHESTS
 function mission5() {
-  setGame("Three Mystery Chests 🎁",
-    "Pick one chest. Every choice has a surprise!",
+  setGame("3 options , kol option fiha surprise 🎁",
+    "a5tari wa7d brk , matatm3ich barcha 😂",
     `<div class="chests">
       <button onclick="openChest(0)">🎁</button>
       <button onclick="openChest(1)">🎀</button>
@@ -633,17 +633,17 @@ function mission5() {
 }
 function openChest(n) {
   const messages = [
-    "Surprise: may your days be full of peace and happy moments. 🌷",
-    "Surprise: may your hard work bring you the success you dream of. 🎓",
-    "Surprise: never forget that you deserve kindness and happiness. 💗"
+    "Surprise: he4y warda lik 🌷 t4akri gdch t3bna w gydch t3adina b mchkl w kol marra net3adouha 🫀",
+    "Surprise: naja7ek hwa joz2 mn a7lami w aham objectif 3andy yab9a nra far7tek enty w 3ayeltk🥹🎓",
+    "Surprise: matansich raw fam wa7d mosta3d ya3tik 3inih bech tra biha hwa gydch i7bk  💗"
   ];
   completeMission(messages[n]);
 }
 
 // MISSION 6 — SECRET ENVELOPE
 function mission6() {
-  setGame("The Secret Envelope 💌",
-    "To unlock Oussy's little message, enter the magic word: the nickname in this game's title!",
+  setGame("kalmet l5item  💌",
+    "bech t7ellih ektby kelmet esser 🤦🏻‍♂️ , hiya esm akther tofla 7abbitha fi 7yety ❤️✨️",
     `<div class="center big-emoji">✉️</div>
     <input id="secretWord" placeholder="Type the secret word..." maxlength="30">
     <button onclick="checkSecret()">Open the envelope 💌</button>`);
@@ -651,7 +651,7 @@ function mission6() {
 function checkSecret() {
   const word = $("secretWord").value.trim().toLowerCase();
   if (word === "gouga") {
-    completeMission("Dear Gouga, I hope this little universe makes you smile. You deserve beautiful things. ❤️");
+    completeMission("rou7y Gouga, yab9a l3alem he4a lkol lik enty khw , nchllh 3jbk he4y 7eja bsita godem l7ajet ln7b nouslha m3k❤️");
   } else feedback("Hint: G O U G A 😉");
 }
 
@@ -659,7 +659,7 @@ function checkSecret() {
 function mission7() {
   hearts = 0;
   setGame("Catch My Hearts 💗",
-    "Tap 5 hearts to collect them. Each heart is a little wish for you!",
+    "enty mlekty 9alby , kol 9alb fih omniya lik!",
     `<div class="tiles">
       ${Array.from({length:9},(_,i)=>
         `<button class="tile" id="heart${i}" onclick="catchHeart(${i})">${["💗","✨","🌸","💖","⭐","💗","🌙","💞","💗"][i]}</button>`
@@ -682,21 +682,21 @@ function mission8() {
   sequence = [2,0,3];
   sequenceStep = 0;
   setGame("The Memory Code 🔐",
-    "Remember this sequence, then enter the numbers in the same order.",
-    `<div class="center" style="font-size:30px;letter-spacing:8px">3 - 1 - 4</div>
-    <input id="codeInput" inputmode="numeric" placeholder="Enter 314">
+    "t4akri lcode ",
+    `<div class="center" style="font-size:30px;letter-spacing:8px">18 - 07 - 2025</div>
+    <input id="codeInput" inputmode="numeric" placeholder="Enter 18072025">
     <button onclick="checkCode()">Unlock the code 🔓</button>`);
 }
 function checkCode() {
-  if ($("codeInput").value.trim() === "314") {
-    completeMission("Unlocked! Every little step counts. Keep believing in yourself. 🔐");
-  } else feedback("Look at the sequence again: 3 - 1 - 4 😊");
+  if ($("codeInput").value.trim() === "18072025") {
+    completeMission("bravo 3lik. he4a teri5 nhar l t3areft fih 3lik 🥹 he4a tari5 ltwledt fih ena marra o5ra♾️");
+  } else feedback("Look at the sequence again: 18 - 07 - 2025 😊");
 }
 
 // MISSION 9 — MOON PUZZLE
 function mission9() {
   setGame("The Moon Puzzle 🌙",
-    "Tap the stars in the right order: first, second, third.",
+    "o9rsi 3lihom betartib , ashelch mn hakke bllhy ? 😂🤦🏻‍♂️",
     `<div class="tiles">
       <button class="tile" onclick="moonTap(2)">🌟</button>
       <button class="tile" onclick="moonTap(1)">⭐</button>
@@ -710,7 +710,7 @@ function moonTap(n) {
   if (n === answer[sequenceStep]) {
     sequenceStep++;
     if (sequenceStep === 3) completeMission("The stars are aligned! You solved the moon puzzle. 🌙");
-    else feedback("Correct! Keep going... ⭐");
+    else feedback("biennnn gouga! Keep going... ⭐");
   } else {
     sequenceStep = 0;
     feedback("Not quite! Start again: ⭐ then 🌟 then ✨");
@@ -719,27 +719,27 @@ function moonTap(n) {
 
 // MISSION 10 — DESTINY
 function mission10() {
-  setGame("Choose Your Destiny 🎀",
-    "Choose one of these doors. Your next surprise is waiting!",
+  setGame("yalla taw a5tary lwejha ta3k 🎀",
+    "a5tary dawla mta3na lbech nemchoulha 😝. hay lmoufaj3a testana fik 😂!",
     `<div class="chests">
-      <button onclick="destiny(0)">🌸</button>
-      <button onclick="destiny(1)">🌙</button>
-      <button onclick="destiny(2)">⭐</button>
+      <button onclick="destiny(0)">🇱🇾</button>
+      <button onclick="destiny(1)">🇩🇪</button>
+      <button onclick="destiny(2)">🇮🇳</button>
     </div>`);
 }
 function destiny(n) {
   const lines = [
-    "Your flower wish: may you always find reasons to smile. 🌸",
-    "Your moon wish: may peaceful nights and brighter mornings find you. 🌙",
-    "Your star wish: may your dreams lead you to wonderful places. ⭐"
+    "Your flower wish: chenhy taw , dawertiha libya fisa3 ☠️ ",
+    "Your moon wish: baaaaa oui , he4ka l objectif ta3na , tet4akri wa9t 7kitlk kfch tana3mlou fi tayara 🤣",
+    "Your star wish: hend leeeee 🐄🔪"
   ];
   completeMission(lines[n]);
 }
 
 // MISSION 11 — PERSONAL VIDEO
 function mission11() {
-  setGame("A Signal from Oussy 📡",
-    "A little message from your secret universe. If you have a personal video, it will appear here.",
+  setGame("A Signal from Ossoss 📡",
+    "mssg s8ir mn l 3alem lmouwazi 😉",
     `<div class="center">📡 <p>Signal found...</p></div>
     <video class="video" controls playsinline preload="metadata">
       <source src="video3.mp4" type="video/mp4">
@@ -761,15 +761,13 @@ function mission12() {
       <div id="letterBox" class="hidden">
         <div id="letter">Dear Gouga ❤️
 
-I made this little universe just to bring you a smile.
-Whatever happens, I wish you happiness, peace, and success.
-Believe in yourself, especially when your BAC feels difficult.
-One exercise at a time. One day at a time. You can do it.
-
-May Allah guide you, protect you, and make your dreams come true.
-Keep shining, Gouga. The world needs your light. 🌙✨
-
-From Oussy, with a special place for you in my heart. ❤️</div>
+sna3t he4a lkol lik enty gouga ❤️ na3ref elli tet3ady b periode s3iba w na3ref 
+elli enty ta3ba w lkol 🥹 heka 3lh ena mawjoud taw , ena 5edmty nfar7ek fi lwa9t 
+elli enty berrasmy mest7a9a tafr7y 🥺 ena w3edtek 9bal w lwa3d din fi ra9bty w gotlk
+bech ne9blek quelque soit lmood ta3k ❤️‍🩹 ena mas2oulity n5allik far7ana wa9t tet8achy 
+moch nejbed rou7y 🥹 ena mohemnty na9ef m3k 7atta ken enty mat7ebich🥺 ena man5alikch ❤️‍🩹 
+w kelma he4a ngollek fiha mn 3amloul 🥹 manich bech n5allik w bech talgyny dima wrak ♾️
+5ater n7bkkk barcha barchaaattt ❤️‍🩹🥹</div>
         <video class="video" controls playsinline preload="metadata">
           <source src="video1.mp4" type="video/mp4">
         </video>
